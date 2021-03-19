@@ -1,0 +1,10 @@
+.navbar {
+  background-color: #343B41;
+  color: #F7F7F7;
+  text-align: center;
+}
+
+p {
+    display: inline-block;
+    padding: 0 5%;
+  }
