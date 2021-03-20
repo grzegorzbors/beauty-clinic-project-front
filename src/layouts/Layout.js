@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "../header/Header";
-import Content from "../content/Content";
-import Footer from "../footer/Footer";
+import Header from "./Header";
+import Content from "./Content";
+import Footer from "./Footer";
 
 function Layout() {
   return (
