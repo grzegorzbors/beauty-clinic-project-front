@@ -1,10 +1,14 @@
 .footer {
+  position: fixed;
+	bottom: 0;
+  left: 0;
   background-color: #343B41;
   color: #F7F7F7;
   text-align: center;
+  width: 100%;
 }
 
-p {
+.footer p {
   display: inline-block;
-  padding: 0 10%;
+  padding: 0 5%;
 }
