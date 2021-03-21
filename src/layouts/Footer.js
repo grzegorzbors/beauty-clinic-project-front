@@ -1,30 +1,45 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
+import Link from "@material-ui/core/Link";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
   footer: {
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    width: "100%",
+    height: "5vh",
     position: "fixed",
     bottom: 0,
     left: 0,
     backgroundColor: "#343B41",
     color: "#F7F7F7",
+    fontWeight: "bold",
     textAlign: "center",
-    width: "100%",
-    "& p": {
-      display: "inline-block",
-      padding: "0 5%"
-    }
+    textTransform: "capitalize",
   },
+  footerlink: {
+    "&:hover": {
+      textDecoration: "none",
+    }
+  }
 }));
 
 function Footer() {
   const classes = useStyles();
+  const preventDefault = (event) => event.preventDefault();
+  const links = ["Copyright", "Ochrona danych osobowych", "Polityka prywatności"]
+
   return (
-    <div className={classes.footer}>
-      <p>Copyright 2021</p>
-      <p>Ochrona danych osobowych</p>
-      <p>Polityka prywatności</p>
-    </div>);
+    <Grid container className={classes.footer}>
+      {links.map((linkText, index) => {
+        if (linkText === "Copyright") {
+          return <Link href="#" className={classes.footerlink} onClick={preventDefault} color="inherit" key={index}>{`${linkText} ${new Date().getFullYear().toString()}`}</Link>
+        }
+        return <Link href="#" className={classes.footerlink} onClick={preventDefault} color="inherit" key={index}>{linkText}</Link>
+        })}
+    </Grid>
+  );
 }
 
 export default Footer;
