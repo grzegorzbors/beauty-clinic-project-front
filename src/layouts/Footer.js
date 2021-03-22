@@ -28,15 +28,33 @@ const useStyles = makeStyles((theme) => ({
 function Footer() {
   const classes = useStyles();
   const preventDefault = (event) => event.preventDefault();
-  const links = ["Copyright", "Ochrona danych osobowych", "Polityka prywatności"]
+  const links = [
+    {
+      text: "Copyright",
+      url: "#",
+      id: 1
+    },
+    {
+      text: "Ochrona danych osobowych",
+      url: "#",
+      id: 2
+    },
+    {
+      text: "Polityka prywatności",
+      url: "#",
+      id: 3
+    },
+
+  ]
 
   return (
     <Grid container className={classes.footer}>
-      {links.map((linkText, index) => {
-        if (linkText === "Copyright") {
-          return <Link href="#" className={classes.footerlink} onClick={preventDefault} color="inherit" key={index}>{`${linkText} ${new Date().getFullYear().toString()}`}</Link>
+      {links.map((link) => {
+        // current year is being appended to copyright
+        if (link.text === "Copyright") {
+          return <Link href={link.url} className={classes.footerlink} onClick={preventDefault} key={link.key} color="inherit">{`${link.text} ${new Date().getFullYear().toString()}`}</Link>
         }
-        return <Link href="#" className={classes.footerlink} onClick={preventDefault} color="inherit" key={index}>{linkText}</Link>
+        return <Link href="#" className={classes.footerlink} onClick={preventDefault} key={link.key} color="inherit">{link.text}</Link>
         })}
     </Grid>
   );

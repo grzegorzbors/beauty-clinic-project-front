@@ -27,20 +27,38 @@ function Navbar() {
   const classes = useStyles();
   const preventDefault = (event) => event.preventDefault();
   const links = [
-    "O Nas",
-    "Usługi",
-    "Nasz Zespół",
-    "Umów wizytę",
-    "FAQ",
-    "Kontakt",
+    {
+      text: "O nas",
+      url: "#",
+    },
+    {
+      text: "Usługi",
+      url: "#",
+    },
+    {
+      text: "Nasz zespół",
+      url: "#",
+    },
+    {
+      text: "Umów wizytę",
+      url: "#"
+    },
+    {
+      text: "FAQ",
+      url: "#"
+    },
+    {
+      text: "Kontakt",
+      url: "#"
+    },
   ];
 
   return (
     <Grid container className={classes.navbar}>
-      {links.map((linkText, index) => {
+      {links.map((link, index) => {
         return (
           <Link href="#" className={classes.navlink} onClick={preventDefault} color="inherit" key={index}>
-            {linkText}
+            {link.text}
           </Link>
         );
       })}
