@@ -1,14 +1,14 @@
-import React from "react";
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
+import moment from "moment";
 
 const useStyles = makeStyles((theme) => ({
   footer: {
     justifyContent: "space-evenly",
     alignItems: "center",
     width: "100%",
-    height: "5vh",
+    minHeight: "5vh",
     position: "fixed",
     bottom: 0,
     left: 0,
@@ -17,47 +17,49 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     textAlign: "center",
     textTransform: "capitalize",
-  },
-  footerlink: {
-    "&:hover": {
+    "&:hover *": {
       textDecoration: "none",
-    }
-  }
+    },
+  },
 }));
 
-function Footer() {
-  const classes = useStyles();
-  const preventDefault = (event) => event.preventDefault();
-  const links = [
-    {
-      text: "Copyright",
-      url: "#",
-      id: 1
-    },
-    {
-      text: "Ochrona danych osobowych",
-      url: "#",
-      id: 2
-    },
-    {
-      text: "Polityka prywatności",
-      url: "#",
-      id: 3
-    },
+const preventDefault = (event) => event.preventDefault();
+const links = [
+  {
+    text: "Copyright",
+    url: "#",
+  },
+  {
+    text: "Ochrona danych osobowych",
+    url: "#",
+  },
+  {
+    text: "Polityka prywatności",
+    url: "#",
+  },
+];
 
-  ]
+const Footer = () => {
+  const classes = useStyles();
 
   return (
     <Grid container className={classes.footer}>
-      {links.map((link) => {
-        // current year is being appended to copyright
-        if (link.text === "Copyright") {
-          return <Link href={link.url} className={classes.footerlink} onClick={preventDefault} key={link.key} color="inherit">{`${link.text} ${new Date().getFullYear().toString()}`}</Link>
-        }
-        return <Link href="#" className={classes.footerlink} onClick={preventDefault} key={link.key} color="inherit">{link.text}</Link>
-        })}
+      {links.map((link, index) => {
+        return (
+          <Link
+            href={link.url}
+            onClick={preventDefault}
+            key={index}
+            color="inherit"
+          >
+            {link.text === "Copyright"
+              ? `${link.text} ${moment().format("YYYY")} \xA9`
+              : link.text}
+          </Link>
+        );
+      })}
     </Grid>
   );
-}
+};
 
 export default Footer;

@@ -3,11 +3,14 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   logo: {
-    height: "60%",
+    minHeight: "60%",
+    "&:hover *": {
+      textDecoration: "none",
+    },
   },
 }));
 
-function Logo() {
+const Logo = () => {
   const classes = useStyles();
 
   return <div className={classes.logo}>Logo</div>;

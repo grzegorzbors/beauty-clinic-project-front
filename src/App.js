@@ -1,7 +1,7 @@
 import Layout from "./layouts/Layout";
 import "./App.css";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <Layout />
