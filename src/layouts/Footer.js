@@ -2,6 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import moment from "moment";
+import { Link as RouterLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -23,19 +24,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const preventDefault = (event) => event.preventDefault();
 const links = [
   {
-    text: "Copyright",
-    url: "#",
-  },
-  {
     text: "Ochrona danych osobowych",
-    url: "#",
+    url: "/personal_data_protection",
   },
   {
     text: "Polityka prywatności",
-    url: "#",
+    url: "/privacy_policy",
   },
 ];
 
@@ -44,17 +40,16 @@ const Footer = () => {
 
   return (
     <Grid container className={classes.footer}>
+      Copyright {moment().format("YYYY")} &copy; 
       {links.map((link, index) => {
         return (
           <Link
-            href={link.url}
-            onClick={preventDefault}
+            component={RouterLink}
+            to={link.url}
             key={index}
             color="inherit"
           >
-            {link.text === "Copyright"
-              ? `${link.text} ${moment().format("YYYY")} \xA9`
-              : link.text}
+            {link.text}
           </Link>
         );
       })}

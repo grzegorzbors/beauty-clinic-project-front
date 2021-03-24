@@ -1,6 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
+import { Link as RouterLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   navbar: {
@@ -20,31 +21,30 @@ const useStyles = makeStyles((theme) => ({
 
 const Navbar = () => {
   const classes = useStyles();
-  const preventDefault = (event) => event.preventDefault();
   const links = [
     {
       text: "O nas",
-      url: "#",
+      url: "/about",
     },
     {
       text: "Usługi",
-      url: "#",
+      url: "/services",
     },
     {
       text: "Nasz zespół",
-      url: "#",
+      url: "/our_team",
     },
     {
       text: "Umów wizytę",
-      url: "#"
+      url: "/new_appointment"
     },
     {
       text: "FAQ",
-      url: "#"
+      url: "/faq"
     },
     {
       text: "Kontakt",
-      url: "#"
+      url: "/contact"
     },
   ];
 
@@ -52,7 +52,11 @@ const Navbar = () => {
     <Grid container className={classes.navbar}>
       {links.map((link, index) => {
         return (
-          <Link href="#" onClick={preventDefault} color="inherit" key={index}>
+          <Link
+            component={RouterLink} 
+            to={link.url} 
+            color="inherit"
+            key={index}>
             {link.text}
           </Link>
         );
