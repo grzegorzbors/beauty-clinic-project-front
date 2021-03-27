@@ -32,11 +32,11 @@ const Navbar = () => {
     },
     {
       text: "Nasz zespół",
-      url: "/our_team",
+      url: "/team",
     },
     {
       text: "Umów wizytę",
-      url: "/new_appointment"
+      url: "/appointment"
     },
     {
       text: "FAQ",
