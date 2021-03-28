@@ -1,14 +1,13 @@
-import Header from "./Header";
-import Content from "./Content";
-import Footer from "./Footer";
-import { Switch, Route } from "react-router-dom";
+import Header from "../components/Header";
+import Content from "../components/Content";
+import Footer from "../components/Footer";
 
 const Layout = () => {
   return (
     <>
-        <Header />
-        <Content />
-        <Footer />
+      <Header />
+      <Content />
+      <Footer />
     </>
   );
 };
