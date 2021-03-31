@@ -41,12 +41,12 @@ const Footer = () => {
   return (
     <Grid container className={classes.footer}>
       Copyright {moment().format("YYYY")} &copy; 
-      {links.map((link, index) => {
+      {links.map((link) => {
         return (
           <Link
             component={RouterLink}
             to={link.url}
-            key={index}
+            key={link.text}
             color="inherit"
           >
             {link.text}

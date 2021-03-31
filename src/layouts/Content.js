@@ -1,7 +1,4 @@
-import React from "react";
-
-
-function Content() {
+const Content = () => {
   return <div className="content">Content</div>;
 }
 
