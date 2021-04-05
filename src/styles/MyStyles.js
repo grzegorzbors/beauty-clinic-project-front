@@ -1,6 +1,16 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useMyStyles = makeStyles((theme) => ({
+  header: {
+    height: "20vh",
+    width: "100%",
+  },
+  logo: {
+    minHeight: "60%",
+    "&:hover *": {
+      textDecoration: "none",
+    },
+  },
   navbar: {
     minHeight: "40%",
     textTransform: "uppercase",
@@ -21,7 +31,7 @@ const useMyStyles = makeStyles((theme) => ({
     fontWeight: theme.typography.fontWeightBold,
     justifyContent: "space-evenly",
     alignItems: "center",
-  }
+  },
 }));
 
 export default useMyStyles;
