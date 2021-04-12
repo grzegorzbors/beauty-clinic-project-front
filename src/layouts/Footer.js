@@ -2,7 +2,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import moment from "moment";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, Route } from "react-router-dom";
+import { routes } from "../routes/routing";
 
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -27,11 +28,11 @@ const useStyles = makeStyles((theme) => ({
 const links = [
   {
     text: "Ochrona danych osobowych",
-    url: "/personal_data_protection",
+    url: routes.PERSONAL_DATA_PROTECTION,
   },
   {
     text: "Polityka prywatności",
-    url: "/privacy_policy",
+    url: routes.PRIVACY_POLICY,
   },
 ];
 
@@ -40,7 +41,7 @@ const Footer = () => {
 
   return (
     <Grid container className={classes.footer}>
-      Copyright {moment().format("YYYY")} &copy; 
+      Copyright {moment().format("YYYY")} &copy;
       {links.map((link) => {
         return (
           <Link

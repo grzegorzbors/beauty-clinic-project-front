@@ -5,30 +5,32 @@ import { Link as RouterLink } from "react-router-dom";
 
 import useMyStyles from "../styles/MyStyles";
 
+import { routes } from "../routes/routing";
+
 const links = [
   {
     text: "O nas",
-    url: "/about",
+    url: routes.ABOUT,
   },
   {
     text: "Usługi",
-    url: "/services",
+    url: routes.SERVICES,
   },
   {
     text: "Nasz zespół",
-    url: "/our_team",
+    url: routes.TEAM,
   },
   {
     text: "Umów wizytę",
-    url: "/new_appointment",
+    url: routes.APPOINTMENT,
   },
   {
     text: "FAQ",
-    url: "/faq",
+    url: routes.FAQ,
   },
   {
     text: "Kontakt",
-    url: "/contact",
+    url: routes.CONTACT,
   },
 ];
 
