@@ -1,11 +1,8 @@
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
-
 import { Link as RouterLink } from "react-router-dom";
-
 import useMyStyles from "../styles/MyStyles";
-
-import { routes } from "../routes/routing";
+import { routes } from "../routing/routes";
 
 const links = [
   {

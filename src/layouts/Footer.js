@@ -1,29 +1,9 @@
-import { makeStyles } from "@material-ui/core/styles";
+import useMyStyles from "../styles/MyStyles";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import moment from "moment";
-import { Link as RouterLink, Route } from "react-router-dom";
-import { routes } from "../routes/routing";
-
-const useStyles = makeStyles((theme) => ({
-  footer: {
-    justifyContent: "space-evenly",
-    alignItems: "center",
-    width: "100%",
-    minHeight: "5vh",
-    position: "fixed",
-    bottom: 0,
-    left: 0,
-    backgroundColor: "#343B41",
-    color: "#F7F7F7",
-    fontWeight: "bold",
-    textAlign: "center",
-    textTransform: "capitalize",
-    "&:hover *": {
-      textDecoration: "none",
-    },
-  },
-}));
+import { Link as RouterLink } from "react-router-dom";
+import { routes } from "../routing/routes";
 
 const links = [
   {
@@ -37,10 +17,10 @@ const links = [
 ];
 
 const Footer = () => {
-  const classes = useStyles();
+  const classes = useMyStyles();
 
   return (
-    <Grid container className={classes.footer}>
+    <Grid container className={`${classes.gray} ${classes.footer}`}>
       Copyright {moment().format("YYYY")} &copy;
       {links.map((link) => {
         return (
