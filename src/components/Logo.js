@@ -1,17 +1,7 @@
-import React from "react";
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-  logo: {
-    minHeight: "60%",
-    "&:hover *": {
-      textDecoration: "none",
-    },
-  },
-}));
+import useMyStyles from "../styles/MyStyles";
 
 const Logo = () => {
-  const classes = useStyles();
+  const classes = useMyStyles();
 
   return <div className={classes.logo}>Logo</div>;
 }
