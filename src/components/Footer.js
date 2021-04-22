@@ -29,6 +29,7 @@ const Footer = () => {
             to={link.url}
             key={link.text}
             color="inherit"
+            underline="none"
           >
             {link.text}
           </Link>
