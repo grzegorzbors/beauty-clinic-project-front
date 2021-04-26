@@ -7,9 +7,6 @@ const useMyStyles = makeStyles((theme) => ({
   },
   logo: {
     minHeight: "60%",
-    "&:hover *": {
-      textDecoration: "none",
-    },
   },
   navbar: {
     minHeight: "40%",
@@ -22,10 +19,6 @@ const useMyStyles = makeStyles((theme) => ({
     left: 0,
   },
   gray: {
-    textDecoration: "none",
-    "&:hover *": {
-      textDecoration: "none",
-    },
     backgroundColor: theme.palette.grey["A400"],
     color: theme.palette.common.white,
     fontWeight: theme.typography.fontWeightBold,

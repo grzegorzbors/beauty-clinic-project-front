@@ -42,6 +42,7 @@ const Navbar = () => {
             component={RouterLink}
             to={link.url}
             color="inherit"
+            underline="none"
             key={link.text}
           >
             {link.text}

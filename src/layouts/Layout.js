@@ -1,16 +1,14 @@
-import Header from "./Header";
-import Content from "./Content";
-import Footer from "./Footer";
-import { BrowserRouter as Router } from "react-router-dom";
+import Header from "../components/Header";
+import AppRouting from "../components/AppRouting";
+import Footer from "../components/Footer";
+
 
 const Layout = () => {
   return (
     <>
-      <Router>
-        <Header />
-        <Content />
-        <Footer />
-      </Router>
+      <Header />
+      <AppRouting />
+      <Footer />
     </>
   );
 };
