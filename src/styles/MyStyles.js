@@ -12,6 +12,9 @@ const useMyStyles = makeStyles((theme) => ({
     minHeight: "40%",
     textTransform: "uppercase",
   },
+  container: {
+    backgroundColor: "#D8DDE1"
+  },
   footer: {
     minHeight: "5vh",
     position: "fixed",
