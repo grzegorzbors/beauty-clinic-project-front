@@ -13,7 +13,15 @@ const useMyStyles = makeStyles((theme) => ({
     textTransform: "uppercase",
   },
   container: {
-    backgroundColor: "#D8DDE1"
+    backgroundColor: "#D8DDE1",
+  },
+  card__teamMember: {
+    display: "flex",
+    marginBottom: ".1rem",
+  },
+  cardContent__teamMember: {
+    display: "flex",
+    flexDirection: "row",
   },
   footer: {
     minHeight: "5vh",

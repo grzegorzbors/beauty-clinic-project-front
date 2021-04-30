@@ -7,7 +7,7 @@ const TeamMemberList = (props) => {
   const [ users, setUsers ] = useState([]);
 
   const fetchUsers = async () => {
-    const response = await axios.get(`https://jsonplaceholder.typicode.com/users`);
+    const response = await axios.get(`https://hospital-application.herokuapp.com/api/users`);
 
     setUsers(response.data);
   };
@@ -17,7 +17,7 @@ const TeamMemberList = (props) => {
   return (
     <>
      {users.map(user => {
-       return <TeamMember key={user.id} name={user.name}/>
+       return <TeamMember key={user.id} firstName={user.firstName} lastName={user.lastName}/>
      })}
     </>
     );

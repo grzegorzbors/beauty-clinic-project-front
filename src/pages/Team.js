@@ -7,7 +7,7 @@ const Team = () => {
   const classes = useMyStyles();
 
   return (
-    <Container maxWidth="lg" className={classes.container}>
+    <Container maxWidth="lg" height="80%" className={classes.container}>
       <h2 align="center">NASI SPECJALIŚCI</h2>
       <TeamMemberList />
     </Container>
