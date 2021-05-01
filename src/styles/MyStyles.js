@@ -12,14 +12,21 @@ const useMyStyles = makeStyles((theme) => ({
     minHeight: "40%",
     textTransform: "uppercase",
   },
-  container: {
-    backgroundColor: "#D8DDE1",
+  grid__Page: {
+    minHeight: "75vh",
+    width: "80%",
   },
-  card__teamMember: {
+  box__Page: {
+    backgroundColor: "#D8DDE1",
+    padding: "0 1rem 1rem 1rem",
+    width: "90%",
+    border: "1px solid black",
+  },
+  card__TeamMember: {
     display: "flex",
     marginBottom: ".1rem",
   },
-  cardContent__teamMember: {
+  cardContent__TeamMember: {
     display: "flex",
     flexDirection: "row",
   },

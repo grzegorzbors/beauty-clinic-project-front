@@ -4,7 +4,7 @@ import axios from "axios";
 
 const TeamMemberList = (props) => {
 
-  const [ users, setUsers ] = useState([]);
+  const [users, setUsers] = useState([]);
 
   const fetchUsers = async () => {
     const response = await axios.get(`https://hospital-application.herokuapp.com/api/users`);
@@ -12,7 +12,7 @@ const TeamMemberList = (props) => {
     setUsers(response.data);
   };
 
-  useEffect( () => { fetchUsers(users) }, [ users ] );
+  useEffect(() => {fetchUsers(users) }, [users]);
 
   return (
     <>

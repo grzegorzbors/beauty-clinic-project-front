@@ -1,4 +1,5 @@
-import Container from "@material-ui/core/Container";
+import { Box, Grid } from "@material-ui/core/";
+// import Box from "@material-ui/core/Box";
 import TeamMemberList from "../components/TeamMemberList";
 
 import useMyStyles from "../styles/MyStyles";
@@ -7,10 +8,17 @@ const Team = () => {
   const classes = useMyStyles();
 
   return (
-    <Container maxWidth="lg" height="80%" className={classes.container}>
-      <h2 align="center">NASI SPECJALIŚCI</h2>
-      <TeamMemberList />
-    </Container>
+    <Grid
+      container
+      justify="center"
+      alignItems="center"
+      className={classes.grid__Page}
+    >
+      <Box className={classes.box__Page}>
+        <h2 align="center">NASI SPECJALIŚCI</h2>
+        <TeamMemberList />
+      </Box>
+    </Grid>
   );
 };
 

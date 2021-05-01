@@ -1,13 +1,12 @@
 import { Card, CardContent, Typography } from "@material-ui/core/";
 import useMyStyles from "../styles/MyStyles";
-import { spacing } from '@material-ui/system';
 
 const TeamMember = (props) => {
   const classes = useMyStyles();
 
   return (
-    <Card key={props.id} className={classes.card__teamMember}>
-      <CardContent className={classes.cardContent__teamMember}>
+    <Card key={props.id} className={classes.card__TeamMember}>
+      <CardContent className={classes.cardContent__TeamMember}>
         <Typography gutterBottom variant="h5" component="h5">
           {`${props.firstName} ${props.lastName}`}
         </Typography>
