@@ -1,16 +1,37 @@
-import { Card, CardContent, Typography } from "@material-ui/core/";
+import {
+  Box,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+} from "@material-ui/core/";
 import useMyStyles from "../styles/MyStyles";
+import teamMemberPic from "../assets/img/team-member-photo.png";
+import AccountCircleSharpIcon from "@material-ui/icons/AccountCircleSharp";
 
 const TeamMember = (props) => {
   const classes = useMyStyles();
 
   return (
-    <Card key={props.id} className={classes.card__TeamMember}>
+    <Card
+      key={props.id}
+      className={classes.card__TeamMember}
+      variant="outlined"
+    >
       <CardContent className={classes.cardContent__TeamMember}>
-        <Typography gutterBottom variant="h5" component="h5">
-          {`${props.firstName} ${props.lastName}`}
-        </Typography>
-        <Typography>
+        <Box className={classes.cardBox__TeamMember}>
+          <Typography gutterBottom variant="h5" component="h2">
+            <AccountCircleSharpIcon color="primary" />{" "}
+            {`${props.firstName} ${props.lastName}`}
+          </Typography>
+          <CardMedia
+            component="img"
+            alt="Specialist Picture"
+            image={teamMemberPic}
+            title={`${props.firstName} ${props.lastName}`}
+          />
+        </Box>
+        <Typography variant="body1" component="p">
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut

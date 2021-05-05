@@ -21,14 +21,21 @@ const useMyStyles = makeStyles((theme) => ({
     padding: "0 1rem 1rem 1rem",
     width: "90%",
     border: "1px solid black",
+    textAlign: "center",
   },
   card__TeamMember: {
-    display: "flex",
     marginBottom: ".1rem",
   },
   cardContent__TeamMember: {
     display: "flex",
     flexDirection: "row",
+    alignItems: "center",
+  },
+  cardBox__TeamMember: {
+    display: "flex",
+    flexDirection: "column",
+    flex: "0 0 30%",
+    paddingRight: "1em"
   },
   footer: {
     minHeight: "5vh",
