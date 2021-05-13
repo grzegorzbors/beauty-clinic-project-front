@@ -3,24 +3,30 @@ import TeamMember from "./TeamMember";
 import axios from "axios";
 
 const TeamMemberList = (props) => {
-
   const [users, setUsers] = useState([]);
 
   const fetchUsers = async () => {
-    const response = await axios.get(`https://hospital-application.herokuapp.com/api/users`);
-
+    const response = await axios.get(process.env.REACT_APP_ENDPOINT_URL);
     setUsers(response.data);
   };
 
-  useEffect(() => {fetchUsers(users) }, [users]);
+  useEffect(() => {
+    fetchUsers(users);
+  }, [users]);
 
   return (
     <>
-     {users.map(user => {
-       return <TeamMember key={user.id} firstName={user.firstName} lastName={user.lastName}/>
-     })}
+      {users.map((user) => {
+        return (
+          <TeamMember
+            key={user.id}
+            firstName={user.firstName}
+            lastName={user.lastName}
+          />
+        );
+      })}
     </>
-    );
+  );
 };
 
 export default TeamMemberList;
