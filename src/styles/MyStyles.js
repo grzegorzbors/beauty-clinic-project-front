@@ -13,7 +13,6 @@ const useMyStyles = makeStyles((theme) => ({
     textTransform: "uppercase",
   },
   grid__Page: {
-    minHeight: "75vh",
     width: "80%",
   },
   box__Page: {
@@ -35,7 +34,12 @@ const useMyStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     flex: "0 0 30%",
-    paddingRight: "1em"
+    paddingRight: "1em",
+    alignItems: "center"
+  },
+  teamMemberImage: {
+    width: "50%",
+    height: "50%"
   },
   footer: {
     minHeight: "5vh",
