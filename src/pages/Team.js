@@ -1,5 +1,4 @@
 import { Box, Grid } from "@material-ui/core/";
-// import Box from "@material-ui/core/Box";
 import TeamMemberList from "../components/TeamMemberList";
 
 import useMyStyles from "../styles/MyStyles";

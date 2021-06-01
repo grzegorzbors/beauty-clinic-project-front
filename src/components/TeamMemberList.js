@@ -4,28 +4,37 @@ import axios from "axios";
 
 const TeamMemberList = (props) => {
   const [users, setUsers] = useState([]);
+  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchUsers = async () => {
+  const fetchUsers = async () => {
+    try {
+      setIsLoading(true);
       const response = await axios.get(process.env.REACT_APP_ENDPOINT_URL);
       setUsers(response.data);
-    };
+    } catch (error) {
+      setIsError(true);
+    }
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
     fetchUsers();
-  },[]);
+  }, []);
+
+  const userList = users.map((user) => {
+    return (
+      <TeamMember
+        key={user.id}
+        userData={user}
+      />
+    );
+  });
 
   return (
     <>
-      {users.map((user) => {
-        return (
-          <TeamMember
-            key={user.id}
-            firstName={user.firstName}
-            lastName={user.lastName}
-            description={user.description}
-            url={user.url}
-          />
-        );
-      })}
+      {isError && <p>Error connecting to user database, please contact site administrator.</p>}
+      {isLoading ? <p>Loading, please wait..</p> : userList}
     </>
   );
 };

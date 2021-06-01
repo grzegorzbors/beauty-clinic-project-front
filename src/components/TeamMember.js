@@ -9,10 +9,11 @@ import AccountCircleSharpIcon from "@material-ui/icons/AccountCircleSharp";
 
 const TeamMember = (props) => {
   const classes = useMyStyles();
+  const { id, firstName, lastName, url, description} = props.userData;
 
   return (
     <Card
-      key={props.id}
+      key={id}
       className={classes.card__TeamMember}
       variant="outlined"
     >
@@ -20,11 +21,11 @@ const TeamMember = (props) => {
         <Box className={classes.cardBox__TeamMember}>
           <Typography gutterBottom variant="h5" component="h2">
             <AccountCircleSharpIcon color="primary" />{" "}
-            {`${props.firstName} ${props.lastName}`}
+            {`${firstName} ${lastName}`}
           </Typography>
-          <img className={classes.teamMemberImage} src={props.url} alt="Specialist" />
+          <img className={classes.teamMemberImage} src={url} alt="Specialist" />
         </Box>
-        <Typography variant="body1" component="p">{props.description}</Typography>
+        <Typography variant="body1" component="p">{description}</Typography>
       </CardContent>
     </Card>
   );
