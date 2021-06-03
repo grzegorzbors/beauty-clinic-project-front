@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import TeamMember from "./TeamMember";
 import axios from "axios";
+import apiUrl from "../api/paths";
 
 const TeamMemberList = (props) => {
   const [users, setUsers] = useState([]);
@@ -10,7 +11,7 @@ const TeamMemberList = (props) => {
   const fetchUsers = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get(process.env.REACT_APP_ENDPOINT_URL);
+      const response = await axios.get(`${process.env.REACT_APP_ENDPOINT_URL}${apiUrl.USERS}`);
       setUsers(response.data);
     } catch (error) {
       setIsError(true);

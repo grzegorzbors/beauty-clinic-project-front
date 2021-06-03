@@ -19,10 +19,12 @@ const TeamMember = (props) => {
     >
       <CardContent className={classes.cardContent__TeamMember}>
         <Box className={classes.cardBox__TeamMember}>
-          <Typography gutterBottom variant="h5" component="h2">
+          <h2 display="flex" alignitems="center">
+            <Typography gutterBottom>
             <AccountCircleSharpIcon color="primary" />{" "}
             {`${firstName} ${lastName}`}
-          </Typography>
+            </Typography>
+          </h2>
           <img className={classes.teamMemberImage} src={url} alt="Specialist" />
         </Box>
         <Typography variant="body1" component="p">{description}</Typography>

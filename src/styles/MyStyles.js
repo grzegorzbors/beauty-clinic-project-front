@@ -12,16 +12,6 @@ const useMyStyles = makeStyles((theme) => ({
     minHeight: "40%",
     textTransform: "uppercase",
   },
-  grid__Page: {
-    width: "80%",
-  },
-  box__Page: {
-    backgroundColor: "#D8DDE1",
-    padding: "0 1rem 1rem 1rem",
-    width: "90%",
-    border: "1px solid black",
-    textAlign: "center",
-  },
   card__TeamMember: {
     marginBottom: ".1rem",
   },
@@ -46,6 +36,9 @@ const useMyStyles = makeStyles((theme) => ({
     position: "fixed",
     bottom: 0,
     left: 0,
+  },
+  lightGray: {
+    backgroundColor: "#D8DDE1",
   },
   gray: {
     backgroundColor: theme.palette.grey["A400"],
