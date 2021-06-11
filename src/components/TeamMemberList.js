@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import TeamMember from "./TeamMember";
 import axios from "axios";
 import apiUrl from "../api/paths";
@@ -8,7 +8,7 @@ const TeamMemberList = (props) => {
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchUsers = async () => {
+  const fetchUsers = useCallback(async () => {
     try {
       setIsLoading(true);
       const response = await axios.get(`${process.env.REACT_APP_ENDPOINT_URL}${apiUrl.USERS}`);
@@ -17,11 +17,11 @@ const TeamMemberList = (props) => {
       setIsError(true);
     }
     setIsLoading(false);
-  };
+  },[]);
 
   useEffect(() => {
     fetchUsers();
-  }, []);
+  }, [fetchUsers]);
 
   const userList = users.map((user) => {
     return (

@@ -1,6 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useMyStyles = makeStyles((theme) => ({
+  // header
   header: {
     height: "20vh",
     width: "100%",
@@ -12,31 +13,38 @@ const useMyStyles = makeStyles((theme) => ({
     minHeight: "40%",
     textTransform: "uppercase",
   },
-  card__TeamMember: {
-    marginBottom: ".1rem",
-  },
-  cardContent__TeamMember: {
+  // team page
+  TeamMember__mainWrapper: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
   },
-  cardBox__TeamMember: {
+  TeamMember__contentWrapper: {
     display: "flex",
     flexDirection: "column",
     flex: "0 0 30%",
     paddingRight: "1em",
-    alignItems: "center"
+    alignItems: "center",
+    fontWeight: "700",
   },
-  teamMemberImage: {
-    width: "50%",
-    height: "50%"
+  TeamMember__name: {
+    fontSize: "1.3rem",
+    display: "flex",
+    alignItems: "center",
+    margin: "0",
   },
+  TeamMember__img: {
+    maxWidth: "50%",
+    height: "auto",
+  },
+  // footer
   footer: {
     minHeight: "5vh",
     position: "fixed",
     bottom: 0,
     left: 0,
   },
+  // general styling
   lightGray: {
     backgroundColor: "#D8DDE1",
   },
