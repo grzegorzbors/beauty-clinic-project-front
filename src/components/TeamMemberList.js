@@ -1,27 +1,28 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import TeamMember from "./TeamMember";
 import axios from "axios";
-import apiUrl from "../api/paths";
+import urls from "../api/urls";
 
-const TeamMemberList = (props) => {
+const TeamMemberList = () => {
   const [users, setUsers] = useState([]);
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchUsers = useCallback(async () => {
+  const fetchUsers = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get(`${process.env.REACT_APP_ENDPOINT_URL}${apiUrl.USERS}`);
+      const response = await axios.get(`${process.env.REACT_APP_ENDPOINT_URL}${urls.USERS}`);
       setUsers(response.data);
     } catch (error) {
       setIsError(true);
+    } finally {
+      setIsLoading(false);
     }
-    setIsLoading(false);
-  },[]);
+  };
 
   useEffect(() => {
     fetchUsers();
-  }, [fetchUsers]);
+  }, []);
 
   const userList = users.map((user) => {
     return (
