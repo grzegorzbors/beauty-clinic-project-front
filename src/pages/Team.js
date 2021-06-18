@@ -1,10 +1,10 @@
 import { Box, Grid } from "@material-ui/core/";
 import TeamMemberList from "../components/TeamMemberList";
 
-import useMyStyles from "../styles/MyStyles";
+import common from "../styles/common";
 
 const Team = () => {
-  const classes = useMyStyles();
+  const classesCommon = common();
 
   return (
     <Grid container justify="center" alignItems="center">
@@ -14,7 +14,7 @@ const Team = () => {
         border="1px solid black"
         p="0 1rem 1rem 1rem"
         align="center"
-        className={classes.lightGray}
+        className={classesCommon.lightGray}
       >
         <h2 align="center">NASI SPECJALIŚCI</h2>
         <TeamMemberList />

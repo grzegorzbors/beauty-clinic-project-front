@@ -1,9 +1,9 @@
 import { Box, Card, CardContent, Typography } from "@material-ui/core/";
-import useMyStyles from "../styles/MyStyles";
+import teamPage from "../styles/teamPage";
 import AccountCircleSharpIcon from "@material-ui/icons/AccountCircleSharp";
 
 const TeamMember = ({userData: { id, firstName, lastName, url, description}}) => {
-  const classes = useMyStyles();
+  const classes = teamPage();
   return (
     <Card key={id} variant="outlined" style={{ marginBottom: ".2rem" }}>
       <CardContent className={classes.TeamMember__mainWrapper}>

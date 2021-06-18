@@ -1,11 +1,11 @@
 import Logo from "./Logo";
 import Navbar from "./Navbar";
-import useMyStyles from "../styles/MyStyles";
+import header from "../styles/header";
 
 const Header = () => {
-  const classes = useMyStyles();
+  const classesHeader = header();
   return (
-    <div className={classes.header}>
+    <div className={classesHeader.header}>
       <Logo />
       <Navbar />
     </div>

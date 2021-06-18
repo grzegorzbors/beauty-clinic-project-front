@@ -1,4 +1,5 @@
-import useMyStyles from "../styles/MyStyles";
+import common from "../styles/common";
+import footer from "../styles/footer";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import moment from "moment";
@@ -17,10 +18,11 @@ const links = [
 ];
 
 const Footer = () => {
-  const classes = useMyStyles();
+  const classesCommon = common();
+  const classesFooter = footer();
 
   return (
-    <Grid container className={`${classes.gray} ${classes.footer}`}>
+    <Grid container className={`${classesCommon.gray} ${classesFooter.footer}`}>
       Copyright {moment().format("YYYY")} &copy;
       {links.map((link) => {
         return (

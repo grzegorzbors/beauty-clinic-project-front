@@ -1,9 +1,9 @@
-import useMyStyles from "../styles/MyStyles";
+import header from "../styles/header";
 
 const Logo = () => {
-  const classes = useMyStyles();
+  const classesHeader = header();
 
-  return <div className={classes.logo}>Logo</div>;
+  return <div className={classesHeader.logo}>Logo</div>;
 }
 
 export default Logo;
