@@ -18,11 +18,11 @@ const links = [
 ];
 
 const Footer = () => {
-  const classesCommon = common();
-  const classesFooter = footer();
+  const commonStyles = common();
+  const footerStyles = footer();
 
   return (
-    <Grid container className={`${classesCommon.gray} ${classesFooter.footer}`}>
+    <Grid container className={`${commonStyles.gray} ${footerStyles.footer}`}>
       Copyright {moment().format("YYYY")} &copy;
       {links.map((link) => {
         return (

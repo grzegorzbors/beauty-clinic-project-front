@@ -34,11 +34,11 @@ const links = [
 ];
 
 const Navbar = () => {
-  const classesHeader = header();
-  const classesCommon = common();
+  const headerStyles = header();
+  const commonStyles = common();
 
   return (
-    <Grid container className={`${classesCommon.gray} ${classesHeader.navbar}`}>
+    <Grid container className={`${commonStyles.gray} ${headerStyles.navbar}`}>
       {links.map((link) => {
         return (
           <Link

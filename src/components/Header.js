@@ -3,9 +3,9 @@ import Navbar from "./Navbar";
 import header from "../styles/header";
 
 const Header = () => {
-  const classesHeader = header();
+  const headerStyles = header();
   return (
-    <div className={classesHeader.header}>
+    <div className={headerStyles.header}>
       <Logo />
       <Navbar />
     </div>
