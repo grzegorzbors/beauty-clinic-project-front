@@ -2,9 +2,10 @@ import common from "../styles/common";
 import footer from "../styles/footer";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
-import moment from "moment";
 import { Link as RouterLink } from "react-router-dom";
 import { routes } from "../routing/routes";
+
+import getYear from "date-fns/getYear";
 
 const links = [
   {
@@ -17,13 +18,15 @@ const links = [
   },
 ];
 
+const currentYear = getYear(new Date());
+
 const Footer = () => {
   const commonStyles = common();
   const footerStyles = footer();
 
   return (
     <Grid container className={`${commonStyles.gray} ${footerStyles.footer}`}>
-      Copyright {moment().format("YYYY")} &copy;
+      Copyright {currentYear} &copy;
       {links.map((link) => {
         return (
           <Link
