@@ -1,8 +1,10 @@
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import { Link as RouterLink } from "react-router-dom";
-import useMyStyles from "../styles/MyStyles";
 import { routes } from "../routing/routes";
+
+import header from "../styles/header";
+import common from "../styles/common";
 
 const links = [
   {
@@ -32,10 +34,11 @@ const links = [
 ];
 
 const Navbar = () => {
-  const classes = useMyStyles();
+  const headerStyles = header();
+  const commonStyles = common();
 
   return (
-    <Grid container className={`${classes.gray} ${classes.navbar}`}>
+    <Grid container className={`${commonStyles.gray} ${headerStyles.navbar}`}>
       {links.map((link) => {
         return (
           <Link
