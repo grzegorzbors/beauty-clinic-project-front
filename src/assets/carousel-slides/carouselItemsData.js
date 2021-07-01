@@ -4,18 +4,15 @@ import Slide3 from "./Slide3.jpeg";
 
 const carouselItems = [
   {
-    title: "Slajd1",
-    subtitle: "First",
+    title: "Korekcja brody i okolic oczu",
     img: Slide1,
   },
   {
-    title: "Slajd2",
-    subtitle: "Second",
+    title: "Powiększanie ust i korekcja nosa",
     img: Slide2,
   },
   {
-    title: "Slajd3",
-    subtitle: "Last",
+    title: "Zabiegi odmładzające",
     img: Slide3,
   },
 ];
