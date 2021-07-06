@@ -36,6 +36,9 @@ const carousel = makeStyles((theme) => ({
     display: "grid",
     placeItems: "start center",
   },
+  arrowIcon: {
+    fontSize: "5rem!important",
+  },
   backArrow: {
     transform: "rotate(180deg)",
   },

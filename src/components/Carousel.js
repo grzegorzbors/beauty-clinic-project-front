@@ -11,7 +11,7 @@ const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const showNextSlide = () => {
-    if (currentSlide < 2) {
+    if (currentSlide < carouselItemsCount) {
       setCurrentSlide(currentSlide + 1);
     } else {
       setCurrentSlide(0);
@@ -35,7 +35,6 @@ const Carousel = () => {
         <div className={carouselStyles.arrowContainer}>
           <ForwardIcon
             className={`${carouselStyles.arrowIcon} ${carouselStyles.backArrow}`}
-            style={{ fontSize: "5rem" }}
             onClick={showPreviousSlide}
           />
         </div>
@@ -47,7 +46,6 @@ const Carousel = () => {
         <div className={carouselStyles.arrowContainer}>
           <ForwardIcon
             className={carouselStyles.arrowIcon}
-            style={{ fontSize: "5rem" }}
             onClick={showNextSlide}
           />
         </div>
