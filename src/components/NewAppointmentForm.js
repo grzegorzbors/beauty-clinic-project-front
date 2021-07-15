@@ -43,7 +43,7 @@ const NewAppointmentForm = () => {
           method: "post",
           url: "myurl",
           data: JSON.stringify(values, null, 2),
-          headers: { "Content-Type": "multipart/form-data" },
+          headers: { "Content-Type": "application/json" },
         })
           .then(function (response) {
             //handle success
