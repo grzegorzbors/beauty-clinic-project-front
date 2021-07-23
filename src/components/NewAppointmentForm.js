@@ -1,6 +1,10 @@
 import { Formik } from "formik";
 import form from "../styles/form";
 import axios from "axios";
+import InputLabel from "@material-ui/core/InputLabel";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+import TextField from "@material-ui/core/TextField";
 
 const NewAppointmentForm = () => {
   const appointmentFormStyles = form();
@@ -9,6 +13,8 @@ const NewAppointmentForm = () => {
       initialValues={{
         date: "",
         time: "",
+        specialisation: "",
+        serviceType: "",
         firstName: "",
         lastName: "",
         email: "",
@@ -69,53 +75,73 @@ const NewAppointmentForm = () => {
           className={appointmentFormStyles.newAppointmentForm}
           onSubmit={handleSubmit}
         >
-          <label htmlFor="date">Data</label>
-          <input
+          <InputLabel htmlFor="date">Data</InputLabel>
+          <TextField
             type="date"
             name="date"
+            id="date"
             onChange={handleChange}
             onBlur={handleBlur}
             defaultValue={values.date}
           />
-          <label htmlFor="time">Godzina</label>
-          <input
+          <InputLabel htmlFor="time">Godzina</InputLabel>
+          <TextField
             type="time"
             name="time"
+            id="time"
             onChange={handleChange}
             onBlur={handleBlur}
             defaultValue={values.time}
           />
           {errors.email && touched.email && errors.email}
-          <label htmlFor="firstName">Imię</label>
-          <input
+          <InputLabel htmlFor="specialisation">Specjalizacja</InputLabel>
+          <Select id="specialisation" name="specialisation">
+            <MenuItem value="select1">Spec 1</MenuItem>
+            <MenuItem value="select2">Spec 2</MenuItem>
+            <MenuItem value="select3">Spec 3</MenuItem>
+            <MenuItem value="select4">Spec 4</MenuItem>
+          </Select>
+          <InputLabel htmlFor="serviceType">Typ usługi</InputLabel>
+          <Select id="serviceType" name="serviceType">
+            <MenuItem value="service1">Usługa 1</MenuItem>
+            <MenuItem value="service2">Usługa 2</MenuItem>
+            <MenuItem value="service3">Usługa 3</MenuItem>
+            <MenuItem value="service4">Usługa 4</MenuItem>
+          </Select>
+          <InputLabel htmlFor="firstName">Imię</InputLabel>
+          <TextField
             type="text"
             name="firstName"
+            id="firstName"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.firstName}
           />
           {errors.firstName && touched.firstName && errors.firstName}
-          <label htmlFor="lastName">Nazwisko</label>
-          <input
+          <InputLabel htmlFor="lastName">Nazwisko</InputLabel>
+          <TextField
             type="text"
             name="lastName"
+            id="lastName"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.lastName}
           />
           {errors.lastName && touched.lastName && errors.lastName}
-          <label htmlFor="email">Email</label>
-          <input
+          <InputLabel htmlFor="email">Email</InputLabel>
+          <TextField
             type="email"
             name="email"
+            id="email"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.email}
           />
-          <label htmlFor="phone">Telefon</label>
-          <input
+          <InputLabel htmlFor="phone">Telefon</InputLabel>
+          <TextField
             type="tel"
             name="phone"
+            id="phone"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.phone}

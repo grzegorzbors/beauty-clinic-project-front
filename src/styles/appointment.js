@@ -1,10 +1,27 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const appointment = makeStyles((theme) => ({
-  appointment: {
+  appointmentPageContainer: {
+    justifyItems: "center",
+    padding: "2rem",
+    minHeight: "500px",
+  },
+  appointmentContainer: {
+    justifyContent: "center",
+  },
+  appointmentFormContainer: {
+    justifyContent: "center",
+  },
+  chooseSpecialistHeader: {
+    margin: 0,
+    textAlign: "center",
+  },
+  imageContainer: {
     display: "flex",
-    flexDirection: "column",
     alignItems: "center",
+  },
+  appointmentImage: {
+    maxWidth: "100%",
   },
 }));
 

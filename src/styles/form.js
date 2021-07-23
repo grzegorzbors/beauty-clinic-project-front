@@ -4,7 +4,7 @@ const form = makeStyles((theme) => ({
   newAppointmentForm: {
     display: "flex",
     flexDirection: "column",
-    maxWidth: "40%",
+    // maxWidth: "40%",
   },
 }));
 
