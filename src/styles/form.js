@@ -4,7 +4,10 @@ const form = makeStyles((theme) => ({
   newAppointmentForm: {
     display: "flex",
     flexDirection: "column",
-    // maxWidth: "40%",
+  },
+  redErrorMessage: {
+    color: "red",
+    fontSize: ".8rem",
   },
 }));
 

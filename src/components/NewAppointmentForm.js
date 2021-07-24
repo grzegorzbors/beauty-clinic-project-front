@@ -8,6 +8,9 @@ import TextField from "@material-ui/core/TextField";
 
 const NewAppointmentForm = () => {
   const appointmentFormStyles = form();
+  const errorMessage = (msg) => (
+    <div className={appointmentFormStyles.redErrorMessage}>{msg}</div>
+  );
   return (
     <Formik
       initialValues={{
@@ -22,9 +25,25 @@ const NewAppointmentForm = () => {
       }}
       validate={(values) => {
         const errors = {};
+        // date error
+        if (!values.date) {
+          errors.date = "Data wymagana";
+        }
+        // time error
+        if (!values.time) {
+          errors.time = "Godzina wymagana";
+        }
+        // specialisation error
+        if (!values.specialisation) {
+          errors.specialisation = "Wybierz specjalizację";
+        }
+        // service type error
+        if (!values.serviceType) {
+          errors.serviceType = "Wybierz typ usługi";
+        }
         // mail error
         if (!values.email) {
-          errors.email = "Pole wymagane";
+          errors.email = "Email wymagany";
         } else if (
           !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
         ) {
@@ -32,15 +51,15 @@ const NewAppointmentForm = () => {
         }
         // first name
         if (!values.firstName) {
-          errors.firstName = "Pole wymagane";
+          errors.firstName = "Imię wymagane";
         }
         // last name
         if (!values.lastName) {
-          errors.lastName = "Pole wymagane";
+          errors.lastName = "Nazwisko wymagane";
         }
         // phone
         if (!values.phone) {
-          errors.phone = "Pole wymagane";
+          errors.phone = "Telefon wymagany";
         }
         return errors;
       }}
@@ -69,7 +88,6 @@ const NewAppointmentForm = () => {
         handleBlur,
         handleSubmit,
         isSubmitting,
-        /* and other goodies */
       }) => (
         <form
           className={appointmentFormStyles.newAppointmentForm}
@@ -84,6 +102,7 @@ const NewAppointmentForm = () => {
             onBlur={handleBlur}
             defaultValue={values.date}
           />
+          {errors.date && errorMessage(errors.date)}
           <InputLabel htmlFor="time">Godzina</InputLabel>
           <TextField
             type="time"
@@ -93,7 +112,7 @@ const NewAppointmentForm = () => {
             onBlur={handleBlur}
             defaultValue={values.time}
           />
-          {errors.email && touched.email && errors.email}
+          {errors.time && errorMessage(errors.time)}
           <InputLabel htmlFor="specialisation">Specjalizacja</InputLabel>
           <Select id="specialisation" name="specialisation">
             <MenuItem value="select1">Spec 1</MenuItem>
@@ -101,6 +120,7 @@ const NewAppointmentForm = () => {
             <MenuItem value="select3">Spec 3</MenuItem>
             <MenuItem value="select4">Spec 4</MenuItem>
           </Select>
+          {errors.specialisation && errorMessage(errors.specialisation)}
           <InputLabel htmlFor="serviceType">Typ usługi</InputLabel>
           <Select id="serviceType" name="serviceType">
             <MenuItem value="service1">Usługa 1</MenuItem>
@@ -108,6 +128,7 @@ const NewAppointmentForm = () => {
             <MenuItem value="service3">Usługa 3</MenuItem>
             <MenuItem value="service4">Usługa 4</MenuItem>
           </Select>
+          {errors.serviceType && errorMessage(errors.serviceType)}
           <InputLabel htmlFor="firstName">Imię</InputLabel>
           <TextField
             type="text"
@@ -117,7 +138,10 @@ const NewAppointmentForm = () => {
             onBlur={handleBlur}
             value={values.firstName}
           />
-          {errors.firstName && touched.firstName && errors.firstName}
+          {errors.firstName &&
+            touched.firstName &&
+            errors.firstName &&
+            errorMessage(errors.firstName)}
           <InputLabel htmlFor="lastName">Nazwisko</InputLabel>
           <TextField
             type="text"
@@ -127,7 +151,10 @@ const NewAppointmentForm = () => {
             onBlur={handleBlur}
             value={values.lastName}
           />
-          {errors.lastName && touched.lastName && errors.lastName}
+          {errors.lastName &&
+            touched.lastName &&
+            errors.lastName &&
+            errorMessage(errors.lastName)}
           <InputLabel htmlFor="email">Email</InputLabel>
           <TextField
             type="email"
@@ -137,6 +164,7 @@ const NewAppointmentForm = () => {
             onBlur={handleBlur}
             value={values.email}
           />
+          {errors.email && errorMessage(errors.email)}
           <InputLabel htmlFor="phone">Telefon</InputLabel>
           <TextField
             type="tel"
@@ -146,7 +174,10 @@ const NewAppointmentForm = () => {
             onBlur={handleBlur}
             value={values.phone}
           />
-          {errors.phone && touched.phone && errors.phone}
+          {errors.phone &&
+            touched.phone &&
+            errors.phone &&
+            errorMessage(errors.phone)}
           <button type="submit" disabled={isSubmitting}>
             Submit
           </button>

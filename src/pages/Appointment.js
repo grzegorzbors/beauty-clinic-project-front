@@ -6,9 +6,14 @@ import appointmentImage from "../assets/img/appointment-pexels-gustavo-fring-398
 const Appointment = () => {
   const appointmentStyles = appointment();
   return (
-    <Grid container className={appointmentStyles.appointmentPageContainer}>
-      <Grid className={appointmentStyles.appointmentContainer} container xs={7}>
-        {/* <h2>UMÓW WIZYTĘ JAKO GOŚĆ</h2> */}
+    <Grid container item className={appointmentStyles.appointmentPageContainer}>
+      <Grid
+        className={appointmentStyles.appointmentContainer}
+        container
+        item={true}
+        xs={7}
+        spacing={2}
+      >
         <Grid
           item
           xs={4}
@@ -16,7 +21,11 @@ const Appointment = () => {
         >
           <NewAppointmentForm />
         </Grid>
-        <Grid item xs={8}>
+        <Grid
+          item
+          xs={8}
+          className={appointmentStyles.chooseSpecialistContainer}
+        >
           <h3 className={appointmentStyles.chooseSpecialistHeader}>
             Wybierz dostępnego specjalistę
           </h3>

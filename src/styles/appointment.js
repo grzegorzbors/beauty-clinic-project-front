@@ -2,9 +2,10 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const appointment = makeStyles((theme) => ({
   appointmentPageContainer: {
-    justifyItems: "center",
+    justifyContent: "center",
     padding: "2rem",
-    minHeight: "500px",
+    minHeight: "630px",
+    margin: "0px",
   },
   appointmentContainer: {
     justifyContent: "center",
@@ -12,16 +13,20 @@ const appointment = makeStyles((theme) => ({
   appointmentFormContainer: {
     justifyContent: "center",
   },
+  chooseSpecialistContainer: {
+    border: "1px solid black",
+  },
   chooseSpecialistHeader: {
     margin: 0,
     textAlign: "center",
   },
   imageContainer: {
     display: "flex",
+    justifyContent: "center",
     alignItems: "center",
   },
   appointmentImage: {
-    maxWidth: "100%",
+    maxWidth: "90%",
   },
 }));
 
