@@ -61,23 +61,27 @@ const NewAppointmentForm = () => {
         if (!values.phone) {
           errors.phone = "Telefon wymagany";
         }
+        // console.log(errors);
+        // console.log(values);
         return errors;
       }}
       onSubmit={(values, { setSubmitting }) => {
+        setSubmitting(true);
         axios({
-          method: "post",
-          url: "myurl",
+          method: "POST",
+          url: "https://react-http-75634-default-rtdb.europe-west1.firebasedatabase.app/appointments.json",
           data: JSON.stringify(values, null, 2),
           headers: { "Content-Type": "application/json" },
         })
-          .then(function (response) {
+          .then((response) => {
             //handle success
-            console.log(response);
+            console.log("success");
           })
-          .catch(function (response) {
+          .catch((response) => {
             //handle error
-            console.log(response);
+            console.log("error");
           });
+        setSubmitting(false);
       }}
     >
       {({
@@ -87,6 +91,7 @@ const NewAppointmentForm = () => {
         handleChange,
         handleBlur,
         handleSubmit,
+        handleReset,
         isSubmitting,
       }) => (
         <form
@@ -100,35 +105,47 @@ const NewAppointmentForm = () => {
             id="date"
             onChange={handleChange}
             onBlur={handleBlur}
-            defaultValue={values.date}
+            // defaultValue={values.date}
           />
-          {errors.date && errorMessage(errors.date)}
+          {touched.date && errorMessage(errors.date)}
           <InputLabel htmlFor="time">Godzina</InputLabel>
           <TextField
             type="time"
             name="time"
             id="time"
+            // value={values.time}
             onChange={handleChange}
             onBlur={handleBlur}
-            defaultValue={values.time}
           />
-          {errors.time && errorMessage(errors.time)}
+          {/* {errors.time && errorMessage(errors.time)} */}
           <InputLabel htmlFor="specialisation">Specjalizacja</InputLabel>
-          <Select id="specialisation" name="specialisation">
+          <Select
+            id="specialisation"
+            name="specialisation"
+            defaultValue="select1"
+            onChange={handleChange}
+            onBlur={handleBlur}
+          >
             <MenuItem value="select1">Spec 1</MenuItem>
             <MenuItem value="select2">Spec 2</MenuItem>
             <MenuItem value="select3">Spec 3</MenuItem>
             <MenuItem value="select4">Spec 4</MenuItem>
           </Select>
-          {errors.specialisation && errorMessage(errors.specialisation)}
+          {/* {errors.specialisation && errorMessage(errors.specialisation)} */}
           <InputLabel htmlFor="serviceType">Typ usługi</InputLabel>
-          <Select id="serviceType" name="serviceType">
+          <Select
+            id="serviceType"
+            name="serviceType"
+            defaultValue="service1"
+            onChange={handleChange}
+            onBlur={handleBlur}
+          >
             <MenuItem value="service1">Usługa 1</MenuItem>
             <MenuItem value="service2">Usługa 2</MenuItem>
             <MenuItem value="service3">Usługa 3</MenuItem>
             <MenuItem value="service4">Usługa 4</MenuItem>
           </Select>
-          {errors.serviceType && errorMessage(errors.serviceType)}
+          {/* {errors.serviceType && errorMessage(errors.serviceType)} */}
           <InputLabel htmlFor="firstName">Imię</InputLabel>
           <TextField
             type="text"
@@ -164,7 +181,7 @@ const NewAppointmentForm = () => {
             onBlur={handleBlur}
             value={values.email}
           />
-          {errors.email && errorMessage(errors.email)}
+          {/* {errors.email && errorMessage(errors.email)} */}
           <InputLabel htmlFor="phone">Telefon</InputLabel>
           <TextField
             type="tel"

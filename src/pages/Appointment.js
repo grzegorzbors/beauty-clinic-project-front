@@ -1,7 +1,6 @@
 import NewAppointmentForm from "../components/NewAppointmentForm";
 import appointment from "../styles/appointment";
 import Grid from "@material-ui/core/Grid";
-import appointmentImage from "../assets/img/appointment-pexels-gustavo-fring-3985299.jpg";
 
 const Appointment = () => {
   const appointmentStyles = appointment();
@@ -14,6 +13,14 @@ const Appointment = () => {
         xs={7}
         spacing={2}
       >
+        <Grid
+          container
+          className={appointmentStyles.appointmentHeaderContainer}
+        >
+          <h2 className={appointmentStyles.appointmentHeader}>
+            Umów wizytę jako gość
+          </h2>
+        </Grid>
         <Grid
           item
           xs={4}
@@ -32,11 +39,7 @@ const Appointment = () => {
         </Grid>
       </Grid>
       <Grid item xs={5} className={appointmentStyles.imageContainer}>
-        <img
-          src={appointmentImage}
-          alt="doctor and patient"
-          className={appointmentStyles.appointmentImage}
-        />
+        <div className={appointmentStyles.image}></div>
       </Grid>
     </Grid>
   );
