@@ -5,38 +5,19 @@ const appointment = makeStyles((theme) => ({
   appointmentPageContainer: {
     justifyContent: "center",
     padding: "2rem",
-    minHeight: "630px",
-    margin: "0px",
   },
   appointmentContainer: {
-    padding: "0 1rem 1rem 1rem",
-    justifyContent: "center",
+    padding: "0 1rem 1.5rem 1rem",
     border: "1px solid black",
     borderRadius: "15px",
-  },
-  appointmentHeaderContainer: {
-    textTransform: "uppercase",
-    justifyContent: "center",
-    alignItems: "center",
   },
   appointmentHeader: {
-    margin: "0px",
-  },
-  appointmentFormContainer: {
-    justifyContent: "center",
-  },
-  chooseSpecialistContainer: {
-    border: "1px solid black",
-    borderRadius: "15px",
-  },
-  chooseSpecialistHeader: {
-    margin: 0,
     textAlign: "center",
   },
   imageContainer: {
     display: "flex",
     justifyItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-end",
     alignItems: "center",
   },
   image: {

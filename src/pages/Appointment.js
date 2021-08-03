@@ -8,37 +8,16 @@ const Appointment = () => {
     <Grid container item className={appointmentStyles.appointmentPageContainer}>
       <Grid
         className={appointmentStyles.appointmentContainer}
-        container
-        item={true}
-        xs={7}
-        spacing={2}
+        item
+        xs={6}
+        md={7}
       >
-        <Grid
-          container
-          className={appointmentStyles.appointmentHeaderContainer}
-        >
-          <h2 className={appointmentStyles.appointmentHeader}>
-            Umów wizytę jako gość
-          </h2>
-        </Grid>
-        <Grid
-          item
-          xs={4}
-          className={appointmentStyles.appointmentFormContainer}
-        >
-          <NewAppointmentForm />
-        </Grid>
-        <Grid
-          item
-          xs={8}
-          className={appointmentStyles.chooseSpecialistContainer}
-        >
-          <h3 className={appointmentStyles.chooseSpecialistHeader}>
-            Wybierz dostępnego specjalistę
-          </h3>
-        </Grid>
+        <h2 className={appointmentStyles.appointmentHeader}>
+          Umów wizytę jako gość
+        </h2>
+        <NewAppointmentForm />
       </Grid>
-      <Grid item xs={5} className={appointmentStyles.imageContainer}>
+      <Grid item xs={6} md={5} className={appointmentStyles.imageContainer}>
         <div className={appointmentStyles.image}></div>
       </Grid>
     </Grid>

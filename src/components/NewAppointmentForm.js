@@ -1,47 +1,85 @@
+import { useEffect, useState } from "react";
 import { Formik } from "formik";
 import form from "../styles/form";
 import axios from "axios";
+import { testDB, urls } from "../api/urls";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 const NewAppointmentForm = () => {
+  const [servicesList, setServicesList] = useState([]);
+  const [doctorsList, setDoctorsList] = useState([]);
   const appointmentFormStyles = form();
+
   const errorMessage = (msg) => (
     <div className={appointmentFormStyles.redErrorMessage}>{msg}</div>
   );
+
+  const fetchServicesList = async () => {
+    try {
+      const response = await axios.get(`${testDB}${urls.SERVICES}`);
+      setServicesList(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchDoctorsList = async () => {
+    try {
+      const response = await axios.get(`${testDB}${urls.DOCTORS}`);
+      setDoctorsList(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const servicesDropDown = servicesList.map((service) => (
+    <MenuItem value={service} key={service}>
+      {service}
+    </MenuItem>
+  ));
+
+  const doctorsDropDown = doctorsList.map((doctor) => (
+    <MenuItem value={doctor} key={doctor}>
+      {doctor}
+    </MenuItem>
+  ));
+
+  useEffect(() => {
+    fetchServicesList();
+    fetchDoctorsList();
+  }, []);
+
   return (
     <Formik
       initialValues={{
         date: "",
         time: "",
-        specialisation: "",
         serviceType: "",
+        doctor: "",
         firstName: "",
         lastName: "",
         email: "",
         phone: "",
       }}
       validate={(values) => {
+        // error validation
         const errors = {};
-        // date error
         if (!values.date) {
           errors.date = "Data wymagana";
         }
-        // time error
         if (!values.time) {
           errors.time = "Godzina wymagana";
         }
-        // specialisation error
-        if (!values.specialisation) {
-          errors.specialisation = "Wybierz specjalizację";
-        }
-        // service type error
         if (!values.serviceType) {
           errors.serviceType = "Wybierz typ usługi";
         }
-        // mail error
+        if (!values.doctor) {
+          errors.doctor = "Wybierz specjalistę";
+        }
         if (!values.email) {
           errors.email = "Email wymagany";
         } else if (
@@ -49,39 +87,31 @@ const NewAppointmentForm = () => {
         ) {
           errors.email = "Invalid email address";
         }
-        // first name
         if (!values.firstName) {
           errors.firstName = "Imię wymagane";
         }
-        // last name
         if (!values.lastName) {
           errors.lastName = "Nazwisko wymagane";
         }
-        // phone
         if (!values.phone) {
           errors.phone = "Telefon wymagany";
         }
-        // console.log(errors);
-        // console.log(values);
         return errors;
       }}
-      onSubmit={(values, { setSubmitting }) => {
-        setSubmitting(true);
-        axios({
-          method: "POST",
-          url: "https://react-http-75634-default-rtdb.europe-west1.firebasedatabase.app/appointments.json",
-          data: JSON.stringify(values, null, 2),
-          headers: { "Content-Type": "application/json" },
-        })
-          .then((response) => {
-            //handle success
-            console.log("success");
-          })
-          .catch((response) => {
-            //handle error
-            console.log("error");
+      onSubmit={async (values, { setSubmitting }) => {
+        try {
+          setSubmitting(true);
+          await axios({
+            method: "POST",
+            url: `${testDB}${urls.APPOINTMENTS}`,
+            data: JSON.stringify(values, null, 2),
+            headers: { "Content-Type": "application/json" },
           });
-        setSubmitting(false);
+        } catch (error) {
+          console.log(error);
+        } finally {
+          setSubmitting(false);
+        }
       }}
     >
       {({
@@ -105,47 +135,41 @@ const NewAppointmentForm = () => {
             id="date"
             onChange={handleChange}
             onBlur={handleBlur}
-            // defaultValue={values.date}
           />
-          {touched.date && errorMessage(errors.date)}
+          {touched.date && errors.date && errorMessage(errors.date)}
           <InputLabel htmlFor="time">Godzina</InputLabel>
           <TextField
             type="time"
             name="time"
             id="time"
-            // value={values.time}
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {/* {errors.time && errorMessage(errors.time)} */}
-          <InputLabel htmlFor="specialisation">Specjalizacja</InputLabel>
-          <Select
-            id="specialisation"
-            name="specialisation"
-            defaultValue="select1"
-            onChange={handleChange}
-            onBlur={handleBlur}
-          >
-            <MenuItem value="select1">Spec 1</MenuItem>
-            <MenuItem value="select2">Spec 2</MenuItem>
-            <MenuItem value="select3">Spec 3</MenuItem>
-            <MenuItem value="select4">Spec 4</MenuItem>
-          </Select>
-          {/* {errors.specialisation && errorMessage(errors.specialisation)} */}
+          {touched.time && errors.time && errorMessage(errors.time)}
           <InputLabel htmlFor="serviceType">Typ usługi</InputLabel>
           <Select
             id="serviceType"
             name="serviceType"
-            defaultValue="service1"
+            defaultValue=""
             onChange={handleChange}
             onBlur={handleBlur}
           >
-            <MenuItem value="service1">Usługa 1</MenuItem>
-            <MenuItem value="service2">Usługa 2</MenuItem>
-            <MenuItem value="service3">Usługa 3</MenuItem>
-            <MenuItem value="service4">Usługa 4</MenuItem>
+            {servicesDropDown}
           </Select>
-          {/* {errors.serviceType && errorMessage(errors.serviceType)} */}
+          {touched.serviceType &&
+            errors.serviceType &&
+            errorMessage(errors.serviceType)}
+          <InputLabel htmlFor="doctor">Specjalista</InputLabel>
+          <Select
+            id="doctor"
+            name="doctor"
+            defaultValue=""
+            onChange={handleChange}
+            onBlur={handleBlur}
+          >
+            {doctorsDropDown}
+          </Select>
+          {touched.doctor && errors.doctor && errorMessage(errors.doctor)}
           <InputLabel htmlFor="firstName">Imię</InputLabel>
           <TextField
             type="text"
@@ -155,8 +179,7 @@ const NewAppointmentForm = () => {
             onBlur={handleBlur}
             value={values.firstName}
           />
-          {errors.firstName &&
-            touched.firstName &&
+          {touched.firstName &&
             errors.firstName &&
             errorMessage(errors.firstName)}
           <InputLabel htmlFor="lastName">Nazwisko</InputLabel>
@@ -168,10 +191,7 @@ const NewAppointmentForm = () => {
             onBlur={handleBlur}
             value={values.lastName}
           />
-          {errors.lastName &&
-            touched.lastName &&
-            errors.lastName &&
-            errorMessage(errors.lastName)}
+          {touched.lastName && errors.lastName && errorMessage(errors.lastName)}
           <InputLabel htmlFor="email">Email</InputLabel>
           <TextField
             type="email"
@@ -181,7 +201,7 @@ const NewAppointmentForm = () => {
             onBlur={handleBlur}
             value={values.email}
           />
-          {/* {errors.email && errorMessage(errors.email)} */}
+          {touched.email && errors.email && errorMessage(errors.email)}
           <InputLabel htmlFor="phone">Telefon</InputLabel>
           <TextField
             type="tel"
@@ -191,13 +211,17 @@ const NewAppointmentForm = () => {
             onBlur={handleBlur}
             value={values.phone}
           />
-          {errors.phone &&
-            touched.phone &&
-            errors.phone &&
-            errorMessage(errors.phone)}
-          <button type="submit" disabled={isSubmitting}>
-            Submit
-          </button>
+          {touched.phone && errors.phone && errorMessage(errors.phone)}
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            disabled={isSubmitting}
+            className={appointmentFormStyles.submitButton}
+          >
+            Umów
+          </Button>
+          {isSubmitting && <p>Umawianie wizyty...</p>}
         </form>
       )}
     </Formik>
