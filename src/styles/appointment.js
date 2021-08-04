@@ -10,6 +10,7 @@ const appointment = makeStyles((theme) => ({
     padding: "0 1rem 1.5rem 1rem",
     border: "1px solid black",
     borderRadius: "15px",
+    boxShadow: "2px 2px 5px",
   },
   appointmentHeader: {
     textAlign: "center",

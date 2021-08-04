@@ -12,18 +12,19 @@ import Button from "@material-ui/core/Button";
 const NewAppointmentForm = () => {
   const [servicesList, setServicesList] = useState([]);
   const [doctorsList, setDoctorsList] = useState([]);
+  const [isError, setIsError] = useState(false);
   const appointmentFormStyles = form();
 
-  const errorMessage = (msg) => (
-    <div className={appointmentFormStyles.redErrorMessage}>{msg}</div>
+  const validationMessage = (msg) => (
+    <div className={appointmentFormStyles.redValidationMessage}>{msg}</div>
   );
 
   const fetchServicesList = async () => {
     try {
       const response = await axios.get(`${testDB}${urls.SERVICES}`);
       setServicesList(response.data);
-    } catch (error) {
-      console.log(error);
+    } catch {
+      setIsError(true);
     }
   };
 
@@ -31,8 +32,8 @@ const NewAppointmentForm = () => {
     try {
       const response = await axios.get(`${testDB}${urls.DOCTORS}`);
       setDoctorsList(response.data);
-    } catch (error) {
-      console.log(error);
+    } catch {
+      setIsError(true);
     }
   };
 
@@ -103,12 +104,12 @@ const NewAppointmentForm = () => {
           setSubmitting(true);
           await axios({
             method: "POST",
-            url: `${testDB}${urls.APPOINTMENTS}`,
+            url: `${testDB}${urls.APPOINTMENTSa}`,
             data: JSON.stringify(values, null, 2),
             headers: { "Content-Type": "application/json" },
           });
-        } catch (error) {
-          console.log(error);
+        } catch {
+          setIsError(true);
         } finally {
           setSubmitting(false);
         }
@@ -136,7 +137,7 @@ const NewAppointmentForm = () => {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {touched.date && errors.date && errorMessage(errors.date)}
+          {touched.date && errors.date && validationMessage(errors.date)}
           <InputLabel htmlFor="time">Godzina</InputLabel>
           <TextField
             type="time"
@@ -145,7 +146,7 @@ const NewAppointmentForm = () => {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {touched.time && errors.time && errorMessage(errors.time)}
+          {touched.time && errors.time && validationMessage(errors.time)}
           <InputLabel htmlFor="serviceType">Typ usługi</InputLabel>
           <Select
             id="serviceType"
@@ -158,7 +159,7 @@ const NewAppointmentForm = () => {
           </Select>
           {touched.serviceType &&
             errors.serviceType &&
-            errorMessage(errors.serviceType)}
+            validationMessage(errors.serviceType)}
           <InputLabel htmlFor="doctor">Specjalista</InputLabel>
           <Select
             id="doctor"
@@ -169,7 +170,7 @@ const NewAppointmentForm = () => {
           >
             {doctorsDropDown}
           </Select>
-          {touched.doctor && errors.doctor && errorMessage(errors.doctor)}
+          {touched.doctor && errors.doctor && validationMessage(errors.doctor)}
           <InputLabel htmlFor="firstName">Imię</InputLabel>
           <TextField
             type="text"
@@ -181,7 +182,7 @@ const NewAppointmentForm = () => {
           />
           {touched.firstName &&
             errors.firstName &&
-            errorMessage(errors.firstName)}
+            validationMessage(errors.firstName)}
           <InputLabel htmlFor="lastName">Nazwisko</InputLabel>
           <TextField
             type="text"
@@ -191,7 +192,9 @@ const NewAppointmentForm = () => {
             onBlur={handleBlur}
             value={values.lastName}
           />
-          {touched.lastName && errors.lastName && errorMessage(errors.lastName)}
+          {touched.lastName &&
+            errors.lastName &&
+            validationMessage(errors.lastName)}
           <InputLabel htmlFor="email">Email</InputLabel>
           <TextField
             type="email"
@@ -201,7 +204,7 @@ const NewAppointmentForm = () => {
             onBlur={handleBlur}
             value={values.email}
           />
-          {touched.email && errors.email && errorMessage(errors.email)}
+          {touched.email && errors.email && validationMessage(errors.email)}
           <InputLabel htmlFor="phone">Telefon</InputLabel>
           <TextField
             type="tel"
@@ -211,7 +214,7 @@ const NewAppointmentForm = () => {
             onBlur={handleBlur}
             value={values.phone}
           />
-          {touched.phone && errors.phone && errorMessage(errors.phone)}
+          {touched.phone && errors.phone && validationMessage(errors.phone)}
           <Button
             type="submit"
             variant="contained"
@@ -221,6 +224,12 @@ const NewAppointmentForm = () => {
           >
             Umów
           </Button>
+          {isError && (
+            <p className={appointmentFormStyles.redValidationMessage}>
+              Błąd łączenia z serwerem. Odśwież stronę i spróbuj ponownie. Gdy
+              błąd się powtarza, skontaktuj się z administratorem.
+            </p>
+          )}
           {isSubmitting && <p>Umawianie wizyty...</p>}
         </form>
       )}
