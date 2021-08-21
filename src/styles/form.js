@@ -11,7 +11,6 @@ const form = makeStyles((theme) => ({
   redValidationMessage: {
     color: "red",
     fontSize: ".8rem",
-    fontWeight: "900",
   },
   submitButton: {
     marginTop: "1rem",

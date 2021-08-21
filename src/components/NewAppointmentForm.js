@@ -2,46 +2,19 @@ import { useEffect, useState } from "react";
 import { Formik, Form } from "formik";
 import axios from "axios";
 import InputLabel from "@material-ui/core/InputLabel";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import TextField from "./TextField";
 import Button from "@material-ui/core/Button";
-import * as Yup from "yup";
+import TextField from "./TextField";
+import Select from "./Select";
 
 import { testDB, urls } from "../api/urls";
 import form from "../styles/form";
+import { validate, initialValues } from "../utils/formUtils";
 
 const NewAppointmentForm = () => {
   const [servicesList, setServicesList] = useState([]);
   const [doctorsList, setDoctorsList] = useState([]);
   const [isError, setIsError] = useState(false);
   const appointmentFormStyles = form();
-
-  const phoneRegExp =
-    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
-
-  const validate = Yup.object({
-    date: Yup.string().required("Wybierz datę"),
-    time: Yup.string().required("Wybierz godzinę"),
-    serviceType: Yup.string().required("Wybierz usługę"),
-    doctor: Yup.string().required("Wybierz specjalistę"),
-    firstName: Yup.string()
-      .max(15, "Dopuszczalna długość 15 liter")
-      .required("Wymagane"),
-    lastName: Yup.string()
-      .max(20, "Dopuszczalna długość 20 liter")
-      .required("Wymagane"),
-    email: Yup.string().email("Niepoprawny adres").required("Wymagane"),
-    phone: Yup.string()
-      .matches(phoneRegExp, "Niepoprawny numer")
-      .required("Wymagane"),
-  });
-
-  console.log("form");
-
-  // const validationMessage = (msg) => (
-  //   <div className={appointmentFormStyles.redValidationMessage}>{msg}</div>
-  // );
 
   const fetchServicesList = async () => {
     try {
@@ -61,17 +34,21 @@ const NewAppointmentForm = () => {
     }
   };
 
-  const servicesDropDown = servicesList.map((service) => (
-    <MenuItem value={service} key={service}>
-      {service}
-    </MenuItem>
-  ));
-
-  const doctorsDropDown = doctorsList.map((doctor) => (
-    <MenuItem value={doctor} key={doctor}>
-      {doctor}
-    </MenuItem>
-  ));
+  const onSubmitHandler = async (values, { setSubmitting }) => {
+    try {
+      setSubmitting(true);
+      await axios({
+        method: "POST",
+        url: `${testDB}${urls.APPOINTMENTS}`,
+        data: JSON.stringify(values, null, 2),
+        headers: { "Content-Type": "application/json" },
+      });
+    } catch {
+      setIsError(true);
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   useEffect(() => {
     fetchServicesList();
@@ -80,69 +57,36 @@ const NewAppointmentForm = () => {
 
   return (
     <Formik
-      initialValues={{
-        date: "",
-        time: "",
-        serviceType: "",
-        doctor: "",
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-      }}
+      initialValues={initialValues}
       validationSchema={validate}
-      onSubmit={async (values, { setSubmitting }) => {
-        try {
-          setSubmitting(true);
-          await axios({
-            method: "POST",
-            url: `${testDB}${urls.APPOINTMENTS}`,
-            data: JSON.stringify(values, null, 2),
-            headers: { "Content-Type": "application/json" },
-          });
-        } catch {
-          setIsError(true);
-        } finally {
-          setSubmitting(false);
-        }
-      }}
+      onSubmit={onSubmitHandler}
     >
-      {({ handleChange }) => (
+      {({ handleChange, isSubmitting }) => (
         <Form className={appointmentFormStyles.newAppointmentForm}>
           <TextField label="Data" type="date" name="date" id="date" />
           <TextField label="Godzina" type="time" name="time" />
           <InputLabel htmlFor="serviceType">Typ usługi</InputLabel>
           <Select
-            id="serviceType"
             name="serviceType"
-            defaultValue=""
+            label="Usługa"
             onChange={handleChange}
-          >
-            {servicesDropDown}
-          </Select>
+            options={servicesList}
+          ></Select>
           <InputLabel htmlFor="doctor">Specjalista</InputLabel>
           <Select
-            id="doctor"
             name="doctor"
-            defaultValue=""
             onChange={handleChange}
-          >
-            {doctorsDropDown}
-          </Select>
+            options={doctorsList}
+          ></Select>
           <TextField label="Imię" type="text" name="firstName" />
-          <TextField
-            label="Nazwisko"
-            type="text"
-            name="lastName"
-            id="lastName"
-          />
+          <TextField label="Nazwisko" type="text" name="lastName" />
           <TextField label="Email" type="email" name="email" />
           <TextField label="Telefon" type="tel" name="phone" />
           <Button
             type="submit"
             variant="contained"
             color="primary"
-            // disabled={isSubmitting}
+            disabled={isSubmitting}
             className={appointmentFormStyles.submitButton}
           >
             Umów
@@ -153,7 +97,7 @@ const NewAppointmentForm = () => {
               błąd się powtarza, skontaktuj się z administratorem.
             </p>
           )}
-          {/* {isSubmitting && <p>Umawianie wizyty...</p>} */}
+          {isSubmitting && <p>Umawianie wizyty...</p>}
         </Form>
       )}
     </Formik>
