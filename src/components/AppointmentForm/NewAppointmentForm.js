@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { Formik, Form } from "formik";
 import axios from "axios";
-import InputLabel from "@material-ui/core/InputLabel";
-import Button from "@material-ui/core/Button";
-import TextField from "./TextField";
-import Select from "./Select";
 
-import { testDB, urls } from "../api/urls";
-import form from "../styles/form";
-import { validate, initialValues } from "../utils/formUtils";
+import Button from "@material-ui/core/Button";
+import FormikControl from "./FormikControl";
+
+import { testDB, urls } from "../../api/urls";
+import { validate, initialValues } from "../../utils/formUtils";
+import form from "../../styles/form";
 
 const NewAppointmentForm = () => {
   const [servicesList, setServicesList] = useState([]);
@@ -63,25 +62,51 @@ const NewAppointmentForm = () => {
     >
       {({ handleChange, isSubmitting }) => (
         <Form className={appointmentFormStyles.newAppointmentForm}>
-          <TextField label="Data" type="date" name="date" id="date" />
-          <TextField label="Godzina" type="time" name="time" />
-          <InputLabel htmlFor="serviceType">Typ usługi</InputLabel>
-          <Select
+          <FormikControl control="date" label="Data" type="date" name="date" />
+          <FormikControl
+            control="time"
+            label="Godzina"
+            type="time"
+            name="time"
+          />
+          <FormikControl
+            control="select"
             name="serviceType"
             label="Usługa"
             onChange={handleChange}
             options={servicesList}
-          ></Select>
-          <InputLabel htmlFor="doctor">Specjalista</InputLabel>
-          <Select
+          />
+          <FormikControl
+            control="select"
             name="doctor"
+            label="Specjalista"
             onChange={handleChange}
             options={doctorsList}
-          ></Select>
-          <TextField label="Imię" type="text" name="firstName" />
-          <TextField label="Nazwisko" type="text" name="lastName" />
-          <TextField label="Email" type="email" name="email" />
-          <TextField label="Telefon" type="tel" name="phone" />
+          />
+          <FormikControl
+            control="text"
+            label="Imię"
+            type="text"
+            name="firstName"
+          />
+          <FormikControl
+            control="text"
+            label="Nazwisko"
+            type="text"
+            name="lastName"
+          />
+          <FormikControl
+            control="email"
+            label="Email"
+            type="email"
+            name="email"
+          />
+          <FormikControl
+            control="text"
+            label="Telefon"
+            type="tel"
+            name="phone"
+          />
           <Button
             type="submit"
             variant="contained"
@@ -92,7 +117,7 @@ const NewAppointmentForm = () => {
             Umów
           </Button>
           {isError && (
-            <p className={appointmentFormStyles.redValidationMessage}>
+            <p className={appointmentFormStyles.errorMessage}>
               Błąd łączenia z serwerem. Odśwież stronę i spróbuj ponownie. Gdy
               błąd się powtarza, skontaktuj się z administratorem.
             </p>

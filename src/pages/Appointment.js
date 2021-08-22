@@ -1,4 +1,4 @@
-import NewAppointmentForm from "../components/NewAppointmentForm";
+import NewAppointmentForm from "../components/AppointmentForm/NewAppointmentForm";
 import appointment from "../styles/appointment";
 import Grid from "@material-ui/core/Grid";
 

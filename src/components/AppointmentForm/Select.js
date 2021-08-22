@@ -1,28 +1,31 @@
 import { InputLabel } from "@material-ui/core";
 import { Field, ErrorMessage } from "formik";
-import useStyles from "../styles/form";
+import ErrorText from "./ErrorText";
 
-const Select = ({ label, name, options, ...props }) => {
+import useStyles from "../../styles/form";
+
+const Select = ({ label, name, options, ...rest }) => {
   const selectStyles = useStyles();
-
   const dropDown = options.map((item) => (
     <option key={item} value={item}>
       {item}
     </option>
   ));
+
   return (
     <>
       <InputLabel htmlFor={name}>{label}</InputLabel>
-      <Field as="select" id={name} name={name} {...props}>
+      <Field
+        className={selectStyles.select}
+        as="select"
+        id={name}
+        name={name}
+        {...rest}
+      >
         <option value={""}>Wybierz...</option>
         {dropDown}
       </Field>
-      <ErrorMessage
-        name={name}
-        render={(msg) => (
-          <div className={selectStyles.redValidationMessage}>{msg}</div>
-        )}
-      />
+      <ErrorMessage name={name} render={(msg) => <ErrorText msg={msg} />} />
     </>
   );
 };

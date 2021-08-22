@@ -8,9 +8,14 @@ const form = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
   },
-  redValidationMessage: {
+  errorMessage: {
     color: "red",
     fontSize: ".8rem",
+  },
+  select: {
+    fontFamily: "inherit",
+    padding: "2px",
+    margin: "2px 0",
   },
   submitButton: {
     marginTop: "1rem",
