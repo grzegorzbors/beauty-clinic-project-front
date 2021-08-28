@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import { Formik, Form } from "formik";
 import axios from "axios";
 
@@ -6,7 +7,7 @@ import Button from "@material-ui/core/Button";
 import FormikControl from "./FormikControl";
 
 import { testDB, urls } from "../../api/urls";
-import { validate, initialValues } from "../../utils/formUtils";
+import { appointmentValidation, initialValues } from "../../utils/formUtils";
 import form from "../../styles/form";
 
 const NewAppointmentForm = () => {
@@ -14,6 +15,7 @@ const NewAppointmentForm = () => {
   const [doctorsList, setDoctorsList] = useState([]);
   const [isError, setIsError] = useState(false);
   const appointmentFormStyles = form();
+  const history = useHistory();
 
   const fetchServicesList = async () => {
     try {
@@ -33,8 +35,9 @@ const NewAppointmentForm = () => {
     }
   };
 
-  const onSubmitHandler = async (values, { setSubmitting }) => {
+  const handleSubmit = async (values, { setSubmitting }) => {
     try {
+      setIsError(false);
       setSubmitting(true);
       await axios({
         method: "POST",
@@ -42,6 +45,7 @@ const NewAppointmentForm = () => {
         data: JSON.stringify(values, null, 2),
         headers: { "Content-Type": "application/json" },
       });
+      history.push("/");
     } catch {
       setIsError(true);
     } finally {
@@ -57,52 +61,57 @@ const NewAppointmentForm = () => {
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={validate}
-      onSubmit={onSubmitHandler}
+      validationSchema={appointmentValidation}
+      onSubmit={handleSubmit}
     >
       {({ handleChange, isSubmitting }) => (
         <Form className={appointmentFormStyles.newAppointmentForm}>
-          <FormikControl control="date" label="Data" type="date" name="date" />
           <FormikControl
-            control="time"
+            controlType="input"
+            label="Data"
+            type="date"
+            name="date"
+          />
+          <FormikControl
+            controlType="input"
             label="Godzina"
             type="time"
             name="time"
           />
           <FormikControl
-            control="select"
+            controlType="select"
             name="serviceType"
             label="Usługa"
             onChange={handleChange}
             options={servicesList}
           />
           <FormikControl
-            control="select"
+            controlType="select"
             name="doctor"
             label="Specjalista"
             onChange={handleChange}
             options={doctorsList}
           />
           <FormikControl
-            control="text"
+            controlType="input"
             label="Imię"
             type="text"
             name="firstName"
           />
           <FormikControl
-            control="text"
+            controlType="input"
             label="Nazwisko"
             type="text"
             name="lastName"
           />
           <FormikControl
-            control="email"
+            controlType="input"
             label="Email"
             type="email"
             name="email"
           />
           <FormikControl
-            control="text"
+            controlType="input"
             label="Telefon"
             type="tel"
             name="phone"

@@ -11,6 +11,9 @@ const appointment = makeStyles((theme) => ({
     border: "1px solid black",
     borderRadius: "15px",
     boxShadow: "2px 2px 5px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
   },
   appointmentHeader: {
     textAlign: "center",

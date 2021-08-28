@@ -13,7 +13,7 @@ const Select = ({ label, name, options, ...rest }) => {
   ));
 
   return (
-    <>
+    <div>
       <InputLabel htmlFor={name}>{label}</InputLabel>
       <Field
         className={selectStyles.select}
@@ -26,7 +26,7 @@ const Select = ({ label, name, options, ...rest }) => {
         {dropDown}
       </Field>
       <ErrorMessage name={name} render={(msg) => <ErrorText msg={msg} />} />
-    </>
+    </div>
   );
 };
 

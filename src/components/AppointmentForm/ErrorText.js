@@ -2,7 +2,7 @@ import useStyles from "../../styles/form";
 
 const ErrorText = ({ msg }) => {
   const textFieldStyles = useStyles();
-  return <div className={textFieldStyles.errorMessage}>{msg}</div>;
+  return <p className={textFieldStyles.errorMessage}>{msg}</p>;
 };
 
 export default ErrorText;
