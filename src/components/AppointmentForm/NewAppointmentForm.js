@@ -9,6 +9,7 @@ import FormikControl from "./FormikControl";
 import { testDB, urls } from "../../api/urls";
 import { appointmentValidation, initialValues } from "../../utils/formUtils";
 import form from "../../styles/form";
+import formikControls from "./formikControlsCfg";
 
 const NewAppointmentForm = () => {
   const [servicesList, setServicesList] = useState([]);
@@ -66,56 +67,17 @@ const NewAppointmentForm = () => {
     >
       {({ handleChange, isSubmitting }) => (
         <Form className={appointmentFormStyles.newAppointmentForm}>
-          <FormikControl
-            controlType="input"
-            label="Data"
-            type="date"
-            name="date"
-          />
-          <FormikControl
-            controlType="input"
-            label="Godzina"
-            type="time"
-            name="time"
-          />
-          <FormikControl
-            controlType="select"
-            name="serviceType"
-            label="Usługa"
-            onChange={handleChange}
-            options={servicesList}
-          />
-          <FormikControl
-            controlType="select"
-            name="doctor"
-            label="Specjalista"
-            onChange={handleChange}
-            options={doctorsList}
-          />
-          <FormikControl
-            controlType="input"
-            label="Imię"
-            type="text"
-            name="firstName"
-          />
-          <FormikControl
-            controlType="input"
-            label="Nazwisko"
-            type="text"
-            name="lastName"
-          />
-          <FormikControl
-            controlType="input"
-            label="Email"
-            type="email"
-            name="email"
-          />
-          <FormikControl
-            controlType="input"
-            label="Telefon"
-            type="tel"
-            name="phone"
-          />
+          {formikControls.map(({ name, controlType, label, type }) => (
+            <FormikControl
+              key={name}
+              controlType={controlType}
+              onChange={handleChange}
+              label={label}
+              type={type}
+              options={name === "serviceType" ? servicesList : doctorsList}
+              name={name}
+            />
+          ))}
           <Button
             type="submit"
             variant="contained"
