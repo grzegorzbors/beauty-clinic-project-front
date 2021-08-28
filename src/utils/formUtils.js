@@ -1,4 +1,5 @@
 import * as Yup from "yup";
+import format from "date-fns/format";
 
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -21,8 +22,8 @@ export const appointmentValidation = Yup.object({
 });
 
 export const initialValues = {
-  date: "",
-  time: "",
+  date: format(new Date(), "yyyy-MM-dd"),
+  time: "08:30:00",
   serviceType: "",
   doctor: "",
   firstName: "",
