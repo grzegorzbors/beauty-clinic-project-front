@@ -7,7 +7,11 @@ import Button from "@material-ui/core/Button";
 import FormikControl from "./FormikControl";
 
 import { testDB, urls } from "../../api/urls";
-import { appointmentValidation, initialValues } from "../../utils/formUtils";
+import { onAppointmentsFormSubmit } from "../../api/requests";
+import {
+  appointmentValidation,
+  initialValues,
+} from "../../utils/formValidationUtils";
 import form from "../../styles/form";
 import formikControls from "./formikControlsCfg";
 
@@ -43,13 +47,7 @@ const NewAppointmentForm = () => {
     try {
       setIsError(false);
       setSubmitting(true);
-      await axios({
-        method: "POST",
-        url: `${testDB}${urls.APPOINTMENTS}`,
-        data: JSON.stringify(values, null, 2),
-        headers: { "Content-Type": "application/json" },
-      });
-
+      await onAppointmentsFormSubmit(values);
       notify();
       history.push("/");
     } catch {
