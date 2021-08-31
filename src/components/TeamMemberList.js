@@ -10,8 +10,11 @@ const TeamMemberList = () => {
 
   const fetchUsers = async () => {
     try {
+      setIsError(false);
       setIsLoading(true);
-      const response = await axios.get(`${process.env.REACT_APP_ENDPOINT_URL}${urls.USERS}`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_ENDPOINT_URL}${urls.USERS}`
+      );
       setUsers(response.data);
     } catch (error) {
       setIsError(true);
@@ -25,17 +28,16 @@ const TeamMemberList = () => {
   }, []);
 
   const userList = users.map((user) => {
-    return (
-      <TeamMember
-        key={user.id}
-        userData={user}
-      />
-    );
+    return <TeamMember key={user.id} userData={user} />;
   });
 
   return (
     <>
-      {isError && <p>Error connecting to user database, please contact site administrator.</p>}
+      {isError && (
+        <p>
+          Error connecting to user database, please contact site administrator.
+        </p>
+      )}
       {isLoading ? <p>Loading, please wait..</p> : userList}
     </>
   );
