@@ -1,4 +1,4 @@
-const formikControls = [
+const appointmentFormConfig = [
   { controlType: "input", label: "Data", type: "date", name: "date" },
   { controlType: "input", label: "Godzina", type: "time", name: "time" },
   {
@@ -17,4 +17,4 @@ const formikControls = [
   { controlType: "input", label: "Telefon", type: "tel", name: "phone" },
 ];
 
-export default formikControls;
+export default appointmentFormConfig;

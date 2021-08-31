@@ -13,10 +13,9 @@ import {
   initialValues,
 } from "../../utils/formValidationUtils";
 import form from "../../styles/form";
-import formikControls from "./formikControlsCfg";
+import appointmentFormConfig from "./appointmentFormConfig";
 
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { notifyAppointmentSuccess, notifyError } from "../../utils/toasts";
 
 const NewAppointmentForm = () => {
   const [servicesList, setServicesList] = useState([]);
@@ -45,10 +44,9 @@ const NewAppointmentForm = () => {
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
-      setIsError(false);
       setSubmitting(true);
       await onAppointmentsFormSubmit(values);
-      notify();
+      notifyAppointmentSuccess();
       history.push("/");
     } catch {
       setIsError(true);
@@ -60,50 +58,41 @@ const NewAppointmentForm = () => {
   useEffect(() => {
     fetchServicesList();
     fetchDoctorsList();
-  }, []);
-
-  const notify = () => toast.success("Wizyta umówiona!");
+    isError && notifyError();
+  }, [isError]);
 
   return (
-    <>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={appointmentValidation}
-        onSubmit={handleSubmit}
-      >
-        {({ handleChange, isSubmitting }) => (
-          <Form className={appointmentFormStyles.newAppointmentForm}>
-            {formikControls.map(({ name, controlType, label, type }) => (
-              <FormikControl
-                key={name}
-                controlType={controlType}
-                onChange={handleChange}
-                label={label}
-                type={type}
-                options={name === "serviceType" ? servicesList : doctorsList}
-                name={name}
-              />
-            ))}
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              disabled={isSubmitting}
-              className={appointmentFormStyles.submitButton}
-            >
-              Umów
-            </Button>
-            {isError && (
-              <p className={appointmentFormStyles.errorMessage}>
-                Błąd łączenia z serwerem. Odśwież stronę i spróbuj ponownie. Gdy
-                błąd się powtarza, skontaktuj się z administratorem.
-              </p>
-            )}
-            {isSubmitting && <p>Umawianie wizyty...</p>}
-          </Form>
-        )}
-      </Formik>
-    </>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={appointmentValidation}
+      onSubmit={handleSubmit}
+    >
+      {({ handleChange, isSubmitting }) => (
+        <Form className={appointmentFormStyles.newAppointmentForm}>
+          {appointmentFormConfig.map(({ name, controlType, label, type }) => (
+            <FormikControl
+              key={name}
+              controlType={controlType}
+              onChange={handleChange}
+              label={label}
+              type={type}
+              options={name === "serviceType" ? servicesList : doctorsList}
+              name={name}
+            />
+          ))}
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            disabled={isSubmitting}
+            className={appointmentFormStyles.submitButton}
+          >
+            Umów
+          </Button>
+          {isSubmitting && <p>Umawianie wizyty...</p>}
+        </Form>
+      )}
+    </Formik>
   );
 };
 

@@ -1,5 +1,4 @@
 import Layout from "./layouts/Layout";
-import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
