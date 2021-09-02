@@ -17,4 +17,5 @@ The goal of this project is to create a landing page of beauty clinic website wi
 - Backend: Spring Boot, Spring Data, Maven, Docker
   Hosting-Heroku, PostgreSQL, Flyway, Spring Security
 
-##Sample Screen
+##Sample Screenshot
+![](./mockup-preview.png)
