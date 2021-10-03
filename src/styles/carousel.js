@@ -10,7 +10,7 @@ const carousel = makeStyles((theme) => ({
     height: "100%",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
-    backgroundPosition: "cover",
+    backgroundPosition: "center",
     display: "flex",
     transition: "all 300ms ease",
     overflow: "hidden",
