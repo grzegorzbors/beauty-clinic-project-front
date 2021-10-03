@@ -1,6 +1,6 @@
 import Slide1 from "./Slide1.jpg";
-import Slide2 from "./Slide2.jpeg";
-import Slide3 from "./Slide3.jpeg";
+import Slide2 from "./Slide2.jpg";
+import Slide3 from "./Slide3.jpg";
 
 const carouselItems = [
   {
