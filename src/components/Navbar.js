@@ -1,7 +1,10 @@
 import Link from "@material-ui/core/Link";
-import Grid from "@material-ui/core/Grid";
 import { Link as RouterLink } from "react-router-dom";
 import { routes } from "../routing/routes";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Button from "@material-ui/core/Button";
+import Logo from "./Logo";
 
 import header from "../styles/header";
 import common from "../styles/common";
@@ -38,21 +41,27 @@ const Navbar = () => {
   const commonStyles = common();
 
   return (
-    <Grid container className={`${commonStyles.gray} ${headerStyles.navbar}`}>
-      {links.map((link) => {
-        return (
-          <Link
-            component={RouterLink}
-            to={link.url}
-            color="inherit"
-            underline="none"
-            key={link.text}
-          >
-            {link.text}
-          </Link>
-        );
-      })}
-    </Grid>
+    <AppBar position="static">
+      <Toolbar className={`${commonStyles.gray} ${headerStyles.navbar}`}>
+        <Logo className={headerStyles.logo} />
+        {links.map((link) => {
+          return (
+            <Link
+              component={RouterLink}
+              to={link.url}
+              color="inherit"
+              underline="none"
+              key={link.text}
+            >
+              {link.text}
+            </Link>
+          );
+        })}
+        <Button variant="contained" color="primary">
+          Zaloguj
+        </Button>
+      </Toolbar>
+    </AppBar>
   );
 };
 

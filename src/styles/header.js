@@ -1,14 +1,16 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const header = makeStyles((theme) => ({
-  header: {
-    height: "20vh",
+  logoContainer: {
+    backgroundColor: "white",
+    borderRadius: "1rem",
+    display: "flex",
+    alignItems: "center",
   },
   logo: {
-    maxHeight: "60%",
+    maxHeight: "4.5rem",
   },
   navbar: {
-    minHeight: "40%",
     textTransform: "uppercase",
   },
 }));
