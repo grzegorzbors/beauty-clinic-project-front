@@ -12,9 +12,7 @@ const Appointment = () => {
         xs={6}
         md={7}
       >
-        <h2 className={appointmentStyles.appointmentHeader}>
-          Umów wizytę jako gość
-        </h2>
+        <h2 className={appointmentStyles.appointmentHeader}>Umów Wizytę</h2>
         <NewAppointmentForm />
       </Grid>
       <Grid item xs={6} md={5} className={appointmentStyles.imageContainer}>

@@ -17,7 +17,7 @@ const Team = () => {
       }}
       className={classesCommon.lightGray}
     >
-      <h2 align="center">NASI SPECJALIŚCI</h2>
+      <h2 align="center">Nasi Specjaliści</h2>
       <TeamMemberList />
     </Grid>
   );

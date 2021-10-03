@@ -34,11 +34,9 @@ const TeamMemberList = () => {
   return (
     <>
       {isError && (
-        <p>
-          Error connecting to user database, please contact site administrator.
-        </p>
+        <p>Błąd łączenia z bazą danych. Skontaktuj się z administratorem.</p>
       )}
-      {isLoading ? <p>Loading, please wait..</p> : userList}
+      {isLoading ? <p>Ładowanie...</p> : userList}
     </>
   );
 };
