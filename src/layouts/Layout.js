@@ -6,7 +6,9 @@ const Layout = () => {
   return (
     <>
       <Navbar />
-      <AppRouting />
+      <div style={{ flex: 1 }}>
+        <AppRouting />
+      </div>
       <Footer />
     </>
   );
