@@ -1,14 +1,12 @@
-import AppRouting from "../components/AppRouting";
+import Content from "../components/Content";
 import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Header/Navbar";
 
 const Layout = () => {
   return (
     <>
       <Navbar />
-      <div style={{ flex: 1 }}>
-        <AppRouting />
-      </div>
+      <Content />
       <Footer />
     </>
   );

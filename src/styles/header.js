@@ -12,6 +12,9 @@ const header = makeStyles((theme) => ({
   },
   navbar: {
     textTransform: "uppercase",
+    // "@media (max-width: 900px)": {
+    //   flexDirection: "column",
+    // },
   },
 }));
 
