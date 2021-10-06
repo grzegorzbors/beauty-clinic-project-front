@@ -12,9 +12,17 @@ const header = makeStyles((theme) => ({
   },
   navbar: {
     textTransform: "uppercase",
-    // "@media (max-width: 900px)": {
-    //   flexDirection: "column",
-    // },
+  },
+  drawerList: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  drawerButton: {
+    width: "80%",
+  },
+  spacedBetween: {
+    justifyContent: "space-between",
   },
 }));
 
