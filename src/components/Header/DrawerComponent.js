@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import {
   Button,
@@ -9,7 +9,6 @@ import {
   ListItem,
   ListItemText,
 } from "@material-ui/core";
-import Link from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
 import links from "./links";
 
@@ -25,15 +24,14 @@ const DrawerComponent = () => {
   const listItems = links.map((link) => {
     return (
       <ListItem onClick={() => setOpenDrawer(false)} key={link.text}>
-        <ListItemText style={{ textTransform: "uppercase" }}>
-          <Link
-            component={RouterLink}
+        <ListItemText className={headerStyles.navbar}>
+          <NavLink
             to={link.url}
-            color="inherit"
-            underline="none"
+            className={headerStyles.link}
+            activeClassName={headerStyles.activeLink}
           >
             {link.text}
-          </Link>
+          </NavLink>
         </ListItemText>
       </ListItem>
     );
