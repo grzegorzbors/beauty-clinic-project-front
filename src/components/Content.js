@@ -6,10 +6,11 @@ import common from "../styles/common";
 
 const Content = () => {
   const classesCommon = common();
-  // className={classesCommon.lightGray}
-
   return (
-    <main style={{ flex: 1 }} className={classesCommon.lightGray}>
+    <main
+      style={{ flex: 1, height: "100vh" }}
+      className={classesCommon.lightGray}
+    >
       <Switch>
         <Route path={routes.HOME} exact component={Pages.Home} />
         <Route path={routes.ABOUT} component={Pages.About} />
