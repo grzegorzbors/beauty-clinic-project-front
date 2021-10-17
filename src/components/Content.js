@@ -2,10 +2,14 @@ import * as Pages from "../pages";
 
 import { Switch, Route } from "react-router-dom";
 import { routes } from "../routing/routes";
+import common from "../styles/common";
 
 const Content = () => {
+  const classesCommon = common();
+  // className={classesCommon.lightGray}
+
   return (
-    <div style={{ flex: 1 }}>
+    <main style={{ flex: 1 }} className={classesCommon.lightGray}>
       <Switch>
         <Route path={routes.HOME} exact component={Pages.Home} />
         <Route path={routes.ABOUT} component={Pages.About} />
@@ -20,7 +24,7 @@ const Content = () => {
         />
         <Route path={routes.PRIVACY_POLICY} component={Pages.PrivacyPolicy} />
       </Switch>
-    </div>
+    </main>
   );
 };
 

@@ -1,4 +1,7 @@
 import Layout from "./layouts/Layout";
+import Navbar from "./components/Header/Navbar";
+import Content from "./components/Content";
+import Footer from "./components/Footer";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 

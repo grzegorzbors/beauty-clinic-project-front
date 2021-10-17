@@ -14,6 +14,7 @@ const appointment = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
+    backgroundColor: "white",
   },
   appointmentHeader: {
     textAlign: "center",

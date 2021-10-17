@@ -1,8 +1,7 @@
-import { Link as RouterLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
-import Link from "@material-ui/core/Link";
 import { useMediaQuery, useTheme } from "@material-ui/core";
 import Logo from "../Logo";
 import DrawerComponent from "./DrawerComponent";
@@ -24,15 +23,14 @@ const Navbar = () => {
 
   const navLinks = links.map((link) => {
     return (
-      <Link
-        component={RouterLink}
+      <NavLink
         to={link.url}
-        color="inherit"
-        underline="none"
         key={link.text}
+        className={headerStyles.link}
+        activeClassName={headerStyles.activeLink}
       >
         {link.text}
-      </Link>
+      </NavLink>
     );
   });
 
