@@ -7,17 +7,17 @@ require("dotenv").config();
 const App = () => {
   return (
     <Router>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnHover={false}
+        theme="colored"
+      />
       <div className="App">
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnHover={false}
-          theme="colored"
-        />
         <Layout />
       </div>
     </Router>

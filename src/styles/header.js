@@ -1,15 +1,39 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const header = makeStyles((theme) => ({
-  header: {
-    height: "20vh",
+  logoContainer: {
+    backgroundColor: "white",
+    borderRadius: "1rem",
+    display: "flex",
+    alignItems: "center",
   },
   logo: {
-    maxHeight: "60%",
+    maxHeight: "4.5rem",
+  },
+  link: {
+    color: "white",
+    textDecoration: "none",
+    "&:hover": {
+      textDecoration: "underline",
+    },
+  },
+  activeLink: {
+    color: "#D8DDE1",
+    textDecoration: "underline",
   },
   navbar: {
-    minHeight: "40%",
     textTransform: "uppercase",
+  },
+  drawerList: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  drawerButton: {
+    width: "80%",
+  },
+  spacedBetween: {
+    justifyContent: "space-between",
   },
 }));
 

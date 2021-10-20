@@ -25,7 +25,10 @@ const Footer = () => {
   const footerStyles = footer();
 
   return (
-    <Grid container className={`${commonStyles.gray} ${footerStyles.footer}`}>
+    <Grid
+      container
+      className={`${commonStyles.grayColor} ${commonStyles.evenlySpaced} ${footerStyles.footer}`}
+    >
       Copyright {currentYear} &copy;
       {links.map((link) => {
         return (

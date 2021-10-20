@@ -4,10 +4,12 @@ const common = makeStyles((theme) => ({
   lightGray: {
     backgroundColor: "#D8DDE1",
   },
-  gray: {
+  grayColor: {
     backgroundColor: theme.palette.grey["A400"],
     color: theme.palette.common.white,
     fontWeight: theme.typography.fontWeightBold,
+  },
+  evenlySpaced: {
     justifyContent: "space-evenly",
     alignItems: "center",
   },

@@ -1,13 +1,12 @@
-import Header from "../components/Header";
-import AppRouting from "../components/AppRouting";
+import Content from "../components/Content";
 import Footer from "../components/Footer";
-
+import Navbar from "../components/Header/Navbar";
 
 const Layout = () => {
   return (
     <>
-      <Header />
-      <AppRouting />
+      <Navbar />
+      <Content />
       <Footer />
     </>
   );
