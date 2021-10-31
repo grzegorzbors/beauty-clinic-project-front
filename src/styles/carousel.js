@@ -2,7 +2,6 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const carousel = makeStyles((theme) => ({
   carousel: {
-    height: "100%",
     width: "100%",
   },
   carouselInner: {
