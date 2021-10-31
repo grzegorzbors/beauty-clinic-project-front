@@ -5,14 +5,13 @@ const Team = () => {
   return (
     <Grid
       container
-      justify="center"
       alignItems="center"
       style={{
         display: "flex",
         flexDirection: "column",
       }}
     >
-      <h2 align="center">Nasi Specjaliści</h2>
+      <h2>Nasi Specjaliści</h2>
       <TeamMemberList />
     </Grid>
   );

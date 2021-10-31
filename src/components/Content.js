@@ -8,7 +8,7 @@ const Content = () => {
   const classesCommon = common();
   return (
     <main
-      style={{ flex: 1, height: "100vh" }}
+      style={{ flex: 1, display: "flex" }}
       className={classesCommon.lightGray}
     >
       <Switch>
