@@ -13,6 +13,13 @@ const common = makeStyles((theme) => ({
     justifyContent: "space-evenly",
     alignItems: "center",
   },
+  pageFlexColumnLayout: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    padding: "0 5rem",
+    textAlign: "justify",
+  },
 }));
 
 export default common;
