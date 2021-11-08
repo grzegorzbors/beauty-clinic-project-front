@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 const about = makeStyles((theme) => ({
-  social: {
+  socialItem: {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
@@ -10,11 +10,18 @@ const about = makeStyles((theme) => ({
     fontSize: "2.5rem",
     marginLeft: "1rem",
   },
-  addressAndSocialCard: {
-    display: "flex",
-    justifyContent: "space-around",
-    flexWrap: "wrap",
-    alignItems: "center",
+  addressAndSocialArea: {
+    textAlign: "center",
+    backgroundColor: "white",
+    padding: "1rem",
+    borderRadius: "15px",
+  },
+  address: {
+    "&::after": {
+      content: '""',
+      display: "block",
+      borderBottom: "1px solid lightgray",
+    },
   },
 }));
 

@@ -1,4 +1,4 @@
-import { Card, Grid, CardContent } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import common from "../styles/common";
 import about from "../styles/about";
 import { Facebook, Instagram, Twitter } from "@material-ui/icons";
@@ -11,65 +11,59 @@ const About = () => {
       <h1>O Nas</h1>
       <Grid item>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at
-          bibendum eros. Aliquam nunc erat, hendrerit tincidunt mauris et,
-          dapibus sodales nibh. Aliquam vitae diam ut velit mattis luctus. Fusce
-          quis venenatis nibh. Integer eu metus erat. Sed sit amet dui sit amet
-          libero varius accumsan et eu dolor. Suspendisse orci justo, consequat
-          id commodo non, varius condimentum lacus. Cras viverra ex in
-          vestibulum lacinia. Integer at egestas eros. Morbi suscipit convallis
-          tempus.
+          Bardzo istotnym dla Beauty Clinic jest propagowanie zabiegów
+          anti-aging, zapobiegających procesom starzenia. W sposób skuteczny
+          usuwamy też oznaki starzenia i niedoskonałości na naszej twarzy i
+          ciele, wspomagając się nowoczesnymi technologiami. Najnowsze
+          technologie nr 1 na świecie, posiadające międzynarodowe certyfikaty
+          medyczne zapewniają skuteczne zabiegi. Profesjonalny Zespół lekarzy,
+          licencjonowanych kosmetologów i fizjoterapeutów zapewnia naturalność i
+          bezpieczeństwo.
         </p>
         <p>
-          Donec id efficitur est. Donec molestie tempus lectus et eleifend. Duis
-          dapibus orci nisl, volutpat finibus magna dapibus vel. Donec eget
-          sollicitudin sem. Quisque eget turpis eget tellus gravida molestie.
-          Vivamus vel massa vel est tincidunt ornare vel ut leo. Morbi rhoncus
-          sem id nisl lacinia, sit amet convallis ex elementum. Phasellus ac
-          pellentesque arcu, sit amet finibus justo. Praesent erat tellus,
-          consectetur at vehicula non, consectetur a dolor. Suspendisse sit amet
-          erat eros. Ut rhoncus ipsum urna, eu dignissim ante cursus a. Praesent
-          lacinia erat sed elit sagittis hendrerit.
+          Oczyszczamy, pielęgnujemy i odmładzamy, ale zanim to nastąpi zawsze
+          konsultujemy, rozmawiamy i diagnozujemy komputerowo, tak by każdy
+          zabieg był skrojony na miarę i dopasowany indywidualnie do potrzeb
+          Twojej skóry. W naszej ofercie znajdziesz szeroki wachlarz zabiegów,
+          tak by sprostać nawet najbardziej wymagającym potrzebom skóry. Prócz
+          zabiegów zawsze planujemy także pielęgnację domową dopasowaną do stylu
+          życia, możliwości i typu cery.
         </p>
         <p>
-          Vivamus non tellus blandit, tincidunt nulla eget, imperdiet augue.
-          Cras vel mi eu sapien ultrices tristique eu ac libero. Quisque et
-          elementum erat. Aliquam erat volutpat. In dictum tincidunt risus. Sed
-          vel tristique magna. Quisque quam libero, lacinia et justo at, gravida
-          ornare velit. Suspendisse non lobortis felis.
+          Uwielbiamy rozwijać nasze umiejętności i ciągle się szkolimy o czym
+          świadczy mnóstwo certyfikatów zdobiących nasze ściany. Wierzymy, że
+          aby zachować młodość prócz pielęgnacji cery należy wciąż się rozwijać
+          i ćwiczyć…umysł! Dlatego gdy pojawia się jakaś nowość my już się
+          szkolimy. Równie mocno co uczyć się lubimy też dzielić się naszą
+          wiedzą, dlatego zawsze możecie liczyć na nasze doradztwo, konsultacje
+          i wsparcie w dążeniu do upragnionej sylwetki czy pięknej cery.
         </p>
       </Grid>
-      <Grid item style={{ width: "100%" }}>
-        <Card className={classesAbout.addressAndSocialCard}>
-          <CardContent>
-            <address>
-              <h3>Beauty Clinic</h3>
-              <p>ul.Przypadkowa 1/2</p>
-              <p>30-612 Kraków</p>
-              <p>+12 634 66 12 </p>
-            </address>
-          </CardContent>
-          <CardContent>
-            <div className={classesAbout.social}>
-              <p>Odwiedź nasz profil na Instagramie</p>
-              <a href="#instagram" style={{ color: "#8a3ab9" }}>
-                <Instagram className={classesAbout.socialIcon} />
-              </a>
-            </div>
-            <div className={classesAbout.social}>
-              <p>Odwiedź nasz profil na Facebooku</p>
-              <a href="#facebook" style={{ color: "#4267B2" }}>
-                <Facebook className={classesAbout.socialIcon} />
-              </a>
-            </div>
-            <div className={classesAbout.social}>
-              <p>Sprawdź nasze najnowsze tweety</p>
-              <a href="#twitter" style={{ color: "#1DA1F2" }}>
-                <Twitter className={classesAbout.socialIcon} />
-              </a>
-            </div>
-          </CardContent>
-        </Card>
+      <Grid item className={classesAbout.addressAndSocialArea}>
+        <address className={classesAbout.address}>
+          <h3 style={{ marginTop: 0 }}>Beauty Clinic</h3>
+          <p>ul.Przypadkowa 1/2</p>
+          <p>30-612 Kraków</p>
+          <p>+12 634 66 12 </p>
+        </address>
+        <div className={classesAbout.socialItem}>
+          <p>Odwiedź nasz profil na Instagramie</p>
+          <a href="#instagram" style={{ color: "#8a3ab9" }}>
+            <Instagram className={classesAbout.socialIcon} />
+          </a>
+        </div>
+        <div className={classesAbout.socialItem}>
+          <p>Odwiedź nasz profil na Facebooku</p>
+          <a href="#facebook" style={{ color: "#4267B2" }}>
+            <Facebook className={classesAbout.socialIcon} />
+          </a>
+        </div>
+        <div className={classesAbout.socialItem}>
+          <p>Sprawdź nasze najnowsze tweety</p>
+          <a href="#twitter" style={{ color: "#1DA1F2" }}>
+            <Twitter className={classesAbout.socialIcon} />
+          </a>
+        </div>
       </Grid>
     </Grid>
   );
