@@ -1,7 +1,7 @@
 import { Grid } from "@material-ui/core";
 import common from "../styles/common";
 import about from "../styles/about";
-import { Facebook, Instagram, Twitter } from "@material-ui/icons";
+import SocialItemsList from "../components/About/SocialItemsList";
 
 const About = () => {
   const classesCommon = common();
@@ -46,24 +46,7 @@ const About = () => {
           <p>30-612 Kraków</p>
           <p>+12 634 66 12 </p>
         </address>
-        <div className={classesAbout.socialItem}>
-          <p>Odwiedź nasz profil na Instagramie</p>
-          <a href="#instagram" style={{ color: "#8a3ab9" }}>
-            <Instagram className={classesAbout.socialIcon} />
-          </a>
-        </div>
-        <div className={classesAbout.socialItem}>
-          <p>Odwiedź nasz profil na Facebooku</p>
-          <a href="#facebook" style={{ color: "#4267B2" }}>
-            <Facebook className={classesAbout.socialIcon} />
-          </a>
-        </div>
-        <div className={classesAbout.socialItem}>
-          <p>Sprawdź nasze najnowsze tweety</p>
-          <a href="#twitter" style={{ color: "#1DA1F2" }}>
-            <Twitter className={classesAbout.socialIcon} />
-          </a>
-        </div>
+        <SocialItemsList />
       </Grid>
     </Grid>
   );
