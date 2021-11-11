@@ -5,7 +5,7 @@ const common = makeStyles((theme) => ({
     backgroundColor: "#D8DDE1",
   },
   grayColor: {
-    backgroundColor: theme.palette.grey["A400"],
+    backgroundColor: theme.palette.grey["A400"] + "!important",
     color: theme.palette.common.white,
     fontWeight: theme.typography.fontWeightBold,
   },
