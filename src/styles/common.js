@@ -17,7 +17,8 @@ const common = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    padding: "0 5rem",
+    padding: "2rem",
+    paddingTop: 0,
     textAlign: "justify",
   },
 }));
