@@ -1,34 +1,54 @@
+import { Grid } from "@material-ui/core";
+import common from "../styles/common";
+import about from "../styles/about";
+import SocialItemsList from "../components/About/SocialItemsList";
+
 const About = () => {
+  const classesCommon = common();
+  const classesAbout = about();
   return (
-    <div>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-      sollicitudin arcu pellentesque, malesuada lorem sed, aliquam diam. Mauris
-      condimentum sapien at ligula consequat, nec placerat risus lobortis.
-      Vivamus dolor mauris, condimentum sit amet volutpat in, bibendum a ipsum.
-      Aenean at nunc vel massa vestibulum scelerisque vel ut magna. Quisque
-      fringilla, lorem sit amet pulvinar ornare, eros elit facilisis arcu, ac
-      rhoncus arcu mauris eu augue. Sed lacus lacus, laoreet ac purus vel,
-      ultricies viverra arcu. Morbi dolor justo, mollis eget felis vel, cursus
-      molestie mauris. Pellentesque at tristique diam, non elementum sapien.
-      Nullam a magna at quam eleifend congue vel sed tortor. Praesent facilisis
-      felis enim, sed aliquam ligula pulvinar sit amet. Praesent ultrices
-      pharetra lorem, sagittis congue ligula aliquet eu. Quisque purus magna,
-      luctus gravida risus ut, pellentesque aliquet mauris. Sed eget efficitur
-      turpis, non tempus eros. Etiam quis velit magna. Aliquam eu pulvinar nibh.
-      Praesent urna erat, auctor id eros in, scelerisque volutpat urna. Duis
-      laoreet enim sit amet sollicitudin efficitur. Suspendisse sit amet nunc
-      orci. In sapien nulla, consequat a vestibulum accumsan, finibus nec nibh.
-      Duis ipsum nisl, efficitur eu felis ac, tristique imperdiet turpis.
-      Curabitur quis molestie nulla. Vestibulum ante ipsum primis in faucibus
-      orci luctus et ultrices posuere cubilia curae; Nunc tempus ex lorem, a
-      tempor libero molestie a. Pellentesque in tortor non enim imperdiet
-      venenatis eget id mi. Mauris fringilla est justo, quis vehicula ipsum
-      faucibus et. Aliquam vitae nunc id est varius porttitor nec eget tellus.
-      Donec quis dictum risus, quis ornare libero. Sed erat velit, suscipit et
-      iaculis ut, tempus nec nisl. Praesent erat orci, accumsan ut risus nec,
-      egestas venenatis nunc. Integer maximus ligula commodo, fringilla risus
-      id, tempus dolor.
-    </div>
+    <Grid container className={classesCommon.pageFlexColumnLayout}>
+      <h1>O Nas</h1>
+      <Grid item>
+        <p>
+          Bardzo istotnym dla Beauty Clinic jest propagowanie zabiegów
+          anti-aging, zapobiegających procesom starzenia. W sposób skuteczny
+          usuwamy też oznaki starzenia i niedoskonałości na naszej twarzy i
+          ciele, wspomagając się nowoczesnymi technologiami. Najnowsze
+          technologie nr 1 na świecie, posiadające międzynarodowe certyfikaty
+          medyczne zapewniają skuteczne zabiegi. Profesjonalny Zespół lekarzy,
+          licencjonowanych kosmetologów i fizjoterapeutów zapewnia naturalność i
+          bezpieczeństwo.
+        </p>
+        <p>
+          Oczyszczamy, pielęgnujemy i odmładzamy, ale zanim to nastąpi zawsze
+          konsultujemy, rozmawiamy i diagnozujemy komputerowo, tak by każdy
+          zabieg był skrojony na miarę i dopasowany indywidualnie do potrzeb
+          Twojej skóry. W naszej ofercie znajdziesz szeroki wachlarz zabiegów,
+          tak by sprostać nawet najbardziej wymagającym potrzebom skóry. Prócz
+          zabiegów zawsze planujemy także pielęgnację domową dopasowaną do stylu
+          życia, możliwości i typu cery.
+        </p>
+        <p>
+          Uwielbiamy rozwijać nasze umiejętności i ciągle się szkolimy o czym
+          świadczy mnóstwo certyfikatów zdobiących nasze ściany. Wierzymy, że
+          aby zachować młodość prócz pielęgnacji cery należy wciąż się rozwijać
+          i ćwiczyć…umysł! Dlatego gdy pojawia się jakaś nowość my już się
+          szkolimy. Równie mocno co uczyć się lubimy też dzielić się naszą
+          wiedzą, dlatego zawsze możecie liczyć na nasze doradztwo, konsultacje
+          i wsparcie w dążeniu do upragnionej sylwetki czy pięknej cery.
+        </p>
+      </Grid>
+      <Grid item className={classesAbout.addressAndSocialArea}>
+        <address className={classesAbout.address}>
+          <h3 style={{ marginTop: 0 }}>Beauty Clinic</h3>
+          <p>ul.Przypadkowa 1/2</p>
+          <p>30-612 Kraków</p>
+          <p>+12 634 66 12 </p>
+        </address>
+        <SocialItemsList />
+      </Grid>
+    </Grid>
   );
 };
 
