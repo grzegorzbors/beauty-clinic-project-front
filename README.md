@@ -1,6 +1,6 @@
 # Beauty Clinic Project
 
-Link to live demo -> [Beauty Clinic](https://amazing-pasteur-4c1568.netlify.app "Beauty Clinic")
+Link to live demo -> [Beauty Clinic](https://beauty-clinic.netlify.app "Beauty Clinic")
 
 ### **Table of Contents**
 
