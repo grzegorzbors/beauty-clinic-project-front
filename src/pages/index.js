@@ -6,4 +6,3 @@ export { default as Team } from "./Team";
 export { default as Appointment } from "./Appointment";
 export { default as FAQ } from "./FAQ";
 export { default as Contact } from "./Contact";
-export { default as PersonalDataProtection } from "./PersonalDataProtection";

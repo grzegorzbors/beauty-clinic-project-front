@@ -19,10 +19,6 @@ const Content = () => {
         <Route path={routes.APPOINTMENT} component={Pages.Appointment} />
         <Route path={routes.FAQ} component={Pages.FAQ} />
         <Route path={routes.CONTACT} component={Pages.Contact} />
-        <Route
-          path={routes.PERSONAL_DATA_PROTECTION}
-          component={Pages.PersonalDataProtection}
-        />
         <Route path={routes.PRIVACY_POLICY} component={Pages.PrivacyPolicy} />
       </Switch>
     </main>
