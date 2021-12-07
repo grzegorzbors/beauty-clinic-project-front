@@ -42,8 +42,8 @@ const Navbar = () => {
       <NavLink
         to={link.url}
         key={link.text}
-        className={headerStyles.link}
-        activeClassName={headerStyles.activeLink}
+        className={commonStyles.link}
+        activeClassName={commonStyles.activeLink}
       >
         {link.text}
       </NavLink>

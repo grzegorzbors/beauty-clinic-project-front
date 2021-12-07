@@ -1,6 +1,17 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const common = makeStyles((theme) => ({
+  link: {
+    color: "white",
+    textDecoration: "none",
+    "&:hover": {
+      textDecoration: "underline",
+    },
+  },
+  activeLink: {
+    color: "#D8DDE1",
+    textDecoration: "underline",
+  },
   lightGray: {
     backgroundColor: "#D8DDE1",
   },

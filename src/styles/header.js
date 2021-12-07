@@ -10,17 +10,6 @@ const header = makeStyles((theme) => ({
   logo: {
     maxHeight: "4.5rem",
   },
-  link: {
-    color: "white",
-    textDecoration: "none",
-    "&:hover": {
-      textDecoration: "underline",
-    },
-  },
-  activeLink: {
-    color: "#D8DDE1",
-    textDecoration: "underline",
-  },
   navbar: {
     textTransform: "uppercase",
   },
